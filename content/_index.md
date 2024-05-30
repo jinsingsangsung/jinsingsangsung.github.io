@@ -19,13 +19,25 @@ sections:
         text: Download CV
         url: uploads/resume.pdf
     design:
-      banner:
-        # Upload your cover image to the `assets/media/` folder and reference it here
-        filename: IMG_9807.jpg
-      biography:
-        # Customize the style of your biography text
-        style: 'text-align: justify; font-size: 0.8em;'
-      columns: '2'
+      css_class: dark
+      background:
+        color: black
+        image:
+          # Add your image background to `assets/media/`.
+          filename: IMG_9807.jpg
+          filters:
+            brightness: 1.0
+          size: cover
+          position: center
+          parallax: false        
+    # design:
+    #   banner:
+    #     # Upload your cover image to the `assets/media/` folder and reference it here
+    #     filename: IMG_9807.jpg
+    #   biography:
+    #     # Customize the style of your biography text
+    #     style: 'text-align: justify; font-size: 0.8em;'
+    #   columns: '2'
   - block: collection
     id: news
     content:
