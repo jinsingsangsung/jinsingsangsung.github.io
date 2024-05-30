@@ -46,7 +46,8 @@ sections:
         author: ''        
         # exclude_featured: false
     design:
-      view: compact
+      # view: compact
+      columns: 2
   # - block: skills
   #   content:
   #     title: Skills & Hobbies
