@@ -70,10 +70,7 @@ sections:
       text: ""
       filters:
         folders:
-          - publication
-        button:
-          text: Download CV
-          url: uploads/resume.pdf          
+          - publication    
         tag: ""
         category: ""
         publication_type: ""
