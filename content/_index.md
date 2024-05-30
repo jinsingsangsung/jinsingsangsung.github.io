@@ -40,6 +40,10 @@ sections:
       filters:
         folders:
           - publication
+        tag: ''
+        category: ''
+        publication_type: ''
+        author: ''        
         # exclude_featured: false
     design:
       view: compact
@@ -55,8 +59,8 @@ sections:
   #   content:
   #     title: Publications
   #     username: admin  
-  - block: languages
-    content:
-      title: Languages
-      username: admin
+  # - block: languages
+  #   content:
+  #     title: Languages
+  #     username: admin
 ---
