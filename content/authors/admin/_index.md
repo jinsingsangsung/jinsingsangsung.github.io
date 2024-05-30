@@ -1,28 +1,28 @@
 ---
 # Display name
-title: 吳健雄
+title: Jinsung Lee's Homepage
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: ""
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Jinsung
+last_name: Lee
 
 # Status emoji
 status:
-  icon: ☕️
+  icon: 🍊
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Director of Cloud Infrastructure
+role: Ph.D Candadiate
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: GenCoin
-    url: https://www.example.com/
+  - name: CVLab, POSTECH
+    url: https://cvlab.postech.ac.kr/lab/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
