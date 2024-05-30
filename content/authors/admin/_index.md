@@ -16,6 +16,9 @@ status:
 # Is this the primary user of the site?
 superuser: true
 
+# Highlight the author in author lists? (true/false)
+highlight_name: true
+
 # Role/position/tagline
 role: Ph.D Candadiate
 
@@ -40,6 +43,11 @@ profiles:
     url: https://www.instagram.com/jinsingsangsung/
   - icon: soundcloud
     url: https://soundcloud.com/jinsingsangsung    
+
+interests:
+  - Artificial Intelligence
+  - Computational Linguistics
+  - Information Retrieval
 
 education:
   - area: PhD Artificial Intelligence
