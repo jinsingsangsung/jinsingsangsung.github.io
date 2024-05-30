@@ -47,14 +47,14 @@ education:
     date_start: 2024-03-01
     date_end: ""
     summary: |
-      Advisor: [Prof Suha Kwak](https://suhakwak.github.io/). \
+      Advisor: [Prof. Suha Kwak](https://suhakwak.github.io/). \
       GPA: -
   - area: MSc Artificial Intelligence
     institution: Pohang University of Science and Technology (POSTECH)
     date_start: 2021-09-01
     date_end: 2024-02-28
     summary: |
-      Advisor: [Prof Suha Kwak](https://suhakwak.github.io/). \
+      Advisor: [Prof. Suha Kwak](https://suhakwak.github.io/). \
       GPA: 4.1/4.3
     button:
       text: 'Read Thesis'
@@ -64,7 +64,7 @@ education:
     date_start: 2015-03-01
     date_end: 2021-08-30
     summary: |
-      Advisor: [Prof Seong-Deog Yang](https://mathematicians.korea.ac.kr/sdyang/). \
+      Advisor: [Prof. Seong-Deog Yang](https://mathematicians.korea.ac.kr/sdyang/). \
       GPA: 3.98/4.5
 work:
   - position: Research Intern
