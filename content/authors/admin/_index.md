@@ -81,7 +81,7 @@ work:
     company_logo: ''
     date_start: 2023-01-02
     date_end: 2023-07-02
-    summary: |2-
+    summary: |
       Responsibilities include:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
