@@ -34,17 +34,7 @@ sections:
       date_format: 'January 2006'
       # Education or Experience section first?
       is_education_first: True
-      columns: '2'
-  - block: collection
-    id: conference-papers
-    content:
-      title: 📝 Conference Paper (Refereed)
-      subtitle: '[All Conference Papers >>](/publication/#paper-conference)'
-      filters:
-        folders:
-          - publication
-    design:
-      columns: '2'      
+      columns: '2' 
   - block: collection
     id: news
     content:
