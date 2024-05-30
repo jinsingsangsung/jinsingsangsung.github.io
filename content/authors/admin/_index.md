@@ -39,7 +39,7 @@ profiles:
   - icon: brands/instagram
     url: https://www.instagram.com/jinsingsangsung/
   - icon: soundcloud
-    url: https://soundcloud.com/jinsingsangsung/
+    url: https://soundcloud.com/jinsingsangsung    
 
 education:
   - area: PhD Artificial Intelligence
