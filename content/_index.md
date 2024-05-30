@@ -40,8 +40,8 @@ sections:
       filters:
         folders:
           - publication
-        tag: 'cite'
-        category: ''
+        tag: ""
+        category: ""
         publication_type: ''
         author: ''        
         # exclude_featured: false
