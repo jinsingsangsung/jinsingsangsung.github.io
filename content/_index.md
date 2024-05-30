@@ -43,7 +43,6 @@ sections:
       filters:
         folders:
           - publication
-        publication_type: 'paper-conference'
     design:
       columns: '2'      
   - block: collection
