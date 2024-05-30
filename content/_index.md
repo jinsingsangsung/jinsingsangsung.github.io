@@ -71,6 +71,9 @@ sections:
       filters:
         folders:
           - publication
+        button:
+          text: Download CV
+          url: uploads/resume.pdf          
         tag: ""
         category: ""
         publication_type: ""
