@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Jinsung Lee's Homepage
+title: Jinsung Lee
 
 # Name pronunciation (optional)
 name_pronunciation: ""
@@ -28,16 +28,18 @@ organizations:
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'mailto:your-email@example.com'
+    url: 'mailto:jinsunglee@postech.ac.kr'
     label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/GetResearchDev
   - icon: brands/github
-    url: https://github.com/gcushen
+    url: https://github.com/jinsingsangsung
+  - icon: brands/google-scholar
+    url: https://scholar.google.com/citations?hl=en&user=WcZTEKcAAAAJ
   - icon: brands/linkedin
-    url: https://www.linkedin.com/
+    url: https://www.linkedin.com/in/jinsung-lee-33ba95254/
   - icon: brands/instagram
-    url: https://www.instagram.com/
+    url: https://www.instagram.com/jinsingsangsung/
+  - icon: soundcloud
+    url: https://soundcloud.com/jinsingsangsung/
 
 education:
   - area: PhD Artificial Intelligence
