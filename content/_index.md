@@ -25,7 +25,7 @@ sections:
       biography:
         # Customize the style of your biography text
         style: 'text-align: justify; font-size: 0.8em;'
-      columns: 2
+      columns: '2'
   - block: experience
     content:
       username: admin
@@ -34,7 +34,18 @@ sections:
       date_format: 'January 2006'
       # Education or Experience section first?
       is_education_first: True
-      columns: 2
+      columns: '2'
+  - block: collection
+    id: conference-papers
+    content:
+      title: 📝 Conference Paper (Refereed)
+      subtitle: '[All Conference Papers >>](/publication/#paper-conference)'
+      filters:
+        folders:
+          - publication
+        publication_type: 'paper-conference'
+    design:
+      columns: '2'      
   - block: collection
     id: news
     content:
@@ -78,7 +89,7 @@ sections:
         exclude_featured: false
     design:
       view: compact
-      columns: 2
+      columns: '2'
   # - block: skills
   #   content:
   #     title: Skills & Hobbies
