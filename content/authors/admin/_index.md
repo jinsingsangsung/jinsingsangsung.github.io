@@ -45,7 +45,7 @@ education:
   - area: PhD Artificial Intelligence
     institution: Pohang University of Science and Technology (POSTECH)
     date_start: 2024-03-01
-    date_end: current
+    date_end: ""
     summary: |
       Supervised by [Prof Suha Kwak](https://suhakwak.github.io/).
     button:
