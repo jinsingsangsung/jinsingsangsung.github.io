@@ -52,7 +52,7 @@ education:
     button:
       text: 'Read Thesis'
       url: 'https://example.com'
-  - area: MSc Artificial Intelligence (advisor: )
+  - area: MSc Artificial Intelligence
     institution: Pohang University of Science and Technology (POSTECH)
     date_start: 2021-09-01
     date_end: 2024-02-28
