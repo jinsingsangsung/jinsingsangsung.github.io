@@ -26,15 +26,6 @@ sections:
         # Customize the style of your biography text
         style: 'text-align: justify; font-size: 0.8em;'
       columns: '2'
-  - block: experience
-    content:
-      username: admin
-    design:
-      # Hugo date format
-      date_format: 'January 2006'
-      # Education or Experience section first?
-      is_education_first: True
-      columns: '2' 
   - block: collection
     id: news
     content:
@@ -63,7 +54,16 @@ sections:
       view: date-title-summary
       # Reduce spacing
       spacing:
-        padding: [0, 0, 0, 0]      
+        padding: [0, 0, 0, 0]          
+  - block: experience
+    content:
+      username: admin
+    design:
+      # Hugo date format
+      date_format: 'January 2006'
+      # Education or Experience section first?
+      is_education_first: True
+      columns: '2' 
   - block: collection
     content:
       title: Publications
