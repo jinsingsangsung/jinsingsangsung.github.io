@@ -41,10 +41,10 @@ sections:
   #   content:
   #     title: Awards
   #     username: admin
-  - block: publications
-    content:
-      title: Publications
-      username: admin  
+  # - block: publications
+  #   content:
+  #     title: Publications
+  #     username: admin  
   - block: languages
     content:
       title: Languages
