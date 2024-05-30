@@ -40,7 +40,7 @@ sections:
       filters:
         folders:
           - publication
-        tag: ''
+        tag: 'cite'
         category: ''
         publication_type: ''
         author: ''        
