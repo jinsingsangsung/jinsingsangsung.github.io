@@ -32,7 +32,7 @@ sections:
       # Hugo date format
       date_format: 'January 2006'
       # Education or Experience section first?
-      is_education_first: false
+      is_education_first: True
   - block: collection
     content:
       title: Publications
@@ -42,11 +42,11 @@ sections:
           - publication
         tag: ""
         category: ""
-        publication_type: ''
-        author: ''        
-        # exclude_featured: false
+        publication_type: ""
+        author: ""
+        exclude_featured: false
     design:
-      # view: compact
+      view: compact
       columns: 2
   # - block: skills
   #   content:
