@@ -48,7 +48,7 @@ education:
     date_end: ""
     summary: |
       Advisor: [Prof Suha Kwak](https://suhakwak.github.io/). \
-      GPA: 4.1/4.3
+      GPA: -
   - area: MSc Artificial Intelligence
     institution: Pohang University of Science and Technology (POSTECH)
     date_start: 2021-09-01

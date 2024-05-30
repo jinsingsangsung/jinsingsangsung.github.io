@@ -33,14 +33,18 @@ sections:
       date_format: 'January 2006'
       # Education or Experience section first?
       is_education_first: false
-  - block: skills
+  # - block: skills
+  #   content:
+  #     title: Skills & Hobbies
+  #     username: admin
+  # - block: awards
+  #   content:
+  #     title: Awards
+  #     username: admin
+  - block: publications
     content:
-      title: Skills & Hobbies
-      username: admin
-  - block: awards
-    content:
-      title: Awards
-      username: admin
+      title: Publications
+      username: admin  
   - block: languages
     content:
       title: Languages
