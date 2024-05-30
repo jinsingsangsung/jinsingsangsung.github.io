@@ -81,7 +81,7 @@ work:
     company_logo: ''
     date_start: 2023-01-02
     date_end: 2023-07-02
-    summary: |
+    summary: |2-
       Responsibilities include:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
@@ -157,5 +157,4 @@ awards:
       Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
 ---
 
-I am currently a Ph.D candidate at POSTECH, where I am having fun doing research!.
-I am interested in understanding a video in general, such as human actions, long-term context, instance recognition, etc.
+I am currently a Ph.D candidate at POSTECH, where I am having fun doing research!. I am interested in understanding a video in general, such as human actions, long-term context, instance recognition, etc.
