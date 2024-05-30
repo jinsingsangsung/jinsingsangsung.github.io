@@ -38,7 +38,7 @@ profiles:
     url: https://www.linkedin.com/in/jinsung-lee-33ba95254/
   - icon: brands/instagram
     url: https://www.instagram.com/jinsingsangsung/
-  - icon: brands/soundcloud
+  - icon: soundcloud
     url: https://soundcloud.com/jinsingsangsung    
 
 education:
