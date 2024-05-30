@@ -49,9 +49,6 @@ education:
     summary: |
       Advisor: [Prof Suha Kwak](https://suhakwak.github.io/). \
       GPA: 4.1/4.3
-    button:
-      text: 'Read Thesis'
-      url: 'https://example.com'
   - area: MSc Artificial Intelligence
     institution: Pohang University of Science and Technology (POSTECH)
     date_start: 2021-09-01
@@ -59,6 +56,9 @@ education:
     summary: |
       Advisor: [Prof Suha Kwak](https://suhakwak.github.io/). \
       GPA: 4.1/4.3
+    button:
+      text: 'Read Thesis'
+      url: 'https://example.com'      
   - area: BSc Mathematics
     institution: Korea University
     date_start: 2015-03-01
@@ -81,33 +81,33 @@ work:
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
-skills:
-  - name: Technical Skills
-    items:
-      - name: Python
-        description: ''
-        percent: 80
-        icon: devicon/python
-      - name: PyTorch
-        description: ''
-        percent: 40
-        icon: devicon/pytorch
-  - name: Hobbies
-    color: '#eeac02'
-    color_border: '#f0bf23'
-    items:
-      - name: Hiking
-        description: ''
-        percent: 60
-        icon: person-simple-walk
-      - name: Cats
-        description: ''
-        percent: 100
-        icon: cat
-      - name: Photography
-        description: ''
-        percent: 80
-        icon: camera
+# skills:
+#   - name: Technical Skills
+#     items:
+#       - name: Python
+#         description: ''
+#         percent: 80
+#         icon: devicon/python
+#       - name: PyTorch
+#         description: ''
+#         percent: 40
+#         icon: devicon/pytorch
+#   - name: Hobbies
+#     color: '#eeac02'
+#     color_border: '#f0bf23'
+#     items:
+#       - name: Hiking
+#         description: ''
+#         percent: 60
+#         icon: person-simple-walk
+#       - name: Cats
+#         description: ''
+#         percent: 100
+#         icon: cat
+#       - name: Photography
+#         description: ''
+#         percent: 80
+#         icon: camera
 
 languages:
   - name: English
