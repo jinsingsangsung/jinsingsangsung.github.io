@@ -45,9 +45,9 @@ profiles:
     url: https://soundcloud.com/jinsingsangsung    
 
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - Video Understanding
+  - Activity Recognition
+  - Neuro-Symbolic Learning
 
 education:
   - area: PhD Artificial Intelligence
