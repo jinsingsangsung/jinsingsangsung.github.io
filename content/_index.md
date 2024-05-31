@@ -26,7 +26,7 @@ sections:
           # Add your image background to `assets/media/`.
           filename: IMG_9807.jpg
           filters:
-            brightness: 1.0
+            brightness: 0.3
           size: cover
           position: center
           parallax: false        
@@ -66,7 +66,7 @@ sections:
       view: date-title-summary
       # Reduce spacing
       spacing:
-        padding: [0, 0, 0, 0]          
+        padding: [5, 5, 5, 5]          
   - block: experience
     content:
       username: admin
