@@ -67,7 +67,7 @@ education:
     button:
       text: 'Read Thesis'
       url: 'https://example.com'      
-  - area: BSc Mathematics
+  - area: BS Mathematics
     institution: Korea University
     date_start: 2015-03-01
     date_end: 2021-08-30
