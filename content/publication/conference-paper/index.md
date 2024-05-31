@@ -5,7 +5,7 @@ title: 'Detector-Free Weakly Supervised Group Activity Recognition'
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - [Dongeun Kim](https://dk-kim.github.io/)
+  - Dongeun [Kim](https://dk-kim.github.io/)
   - admin
   - Minsu Cho
   - Suha Kwak
@@ -86,9 +86,9 @@ CVPR 2022
 
 
 
-{{% callout note %}}
+<!-- {{% callout note %}}
 Click the _Cite_ button to import publication metadata into your reference management software.
-{{% /callout %}}
+{{% /callout %}} -->
 
 <!-- {{% callout note %}}
 Create your slides in Markdown - click the _Slides_ button to check out the example.
