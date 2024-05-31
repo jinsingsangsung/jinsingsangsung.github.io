@@ -43,8 +43,8 @@ featured: true
 
 # Custom links (uncomment lines below)
 links:
-- name: DFWSGAR
-  url: https://github.com/dk-kim/DFWSGAR
+- name: Custom Link
+  url: http://cvlab.postech.ac.kr/research/DFWSGAR/
 
 url_pdf: https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://arxiv.org/pdf/2204.02139&ved=2ahUKEwjh64_Pv7eGAxVTsVYBHaVQPN8QFnoECA8QAQ&usg=AOvVaw2hze72VyhqdHHuADGe4FgY
 url_code: https://github.com/dk-kim/DFWSGAR
