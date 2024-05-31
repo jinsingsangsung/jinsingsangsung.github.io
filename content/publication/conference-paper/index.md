@@ -5,7 +5,7 @@ title: 'Detector-Free Weakly Supervised Group Activity Recognition'
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - Dongeun [Kim](https://dk-kim.github.io/)
+  - Dongeun Kim
   - admin
   - Minsu Cho
   - Suha Kwak
@@ -33,7 +33,9 @@ publication_short: In *CVPR 2022*
 abstract: Group activity recognition is the task of understanding the activity conducted by a group of people as a whole in a multi-person video. Existing models for this task are often impractical in that they demand ground-truth bounding box labels of actors even in testing or rely on off-the-shelf object detectors. Motivated by this, we propose a novel model for group activity recognition that depends neither on bounding box labels nor on object detector. Our model based on Transformer localizes and encodes partial contexts of a group activity by leveraging the attention mechanism, and represents a video clip as a set of partial context embeddings. The embedding vectors are then aggregated to form a single group representation that reflects the entire context of an activity while capturing temporal evolution of each partial context. Our method achieves outstanding performance on two benchmarks, Volleyball and NBA datasets, surpassing not only the state of the art trained with the same level of supervision, but also some of existing models relying on stronger supervision.
 
 # Summary. An optional shortened abstract.
-# summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
+summary: 
+  Dongeun Kim, *Jinsung Lee*, Minsu Cho, Suha Kwak \
+  CVPR 2022
 
 tags:
   - Group Activity Recognition
