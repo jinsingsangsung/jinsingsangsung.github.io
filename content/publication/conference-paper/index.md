@@ -35,7 +35,8 @@ abstract: Group activity recognition is the task of understanding the activity c
 # Summary. An optional shortened abstract.
 summary: 
   Dongeun Kim, *Jinsung Lee*, Minsu Cho, Suha Kwak \
-  CVPR 2022
+  CVPR 2022 \
+  abcde
 
 tags:
   - Group Activity Recognition
