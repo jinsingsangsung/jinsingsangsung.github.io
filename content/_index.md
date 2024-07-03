@@ -78,16 +78,34 @@ sections:
       subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
       text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
   
-  - block: github.CQElab.collection
-    id: journal-articles
+  - block: 'github.cqelab.collection'
     content:
-      title: 📝 Publications
+      title: Recent CQE News
+      subtitle: ''
+      text: ''
+      # Page type to display. E.g. post, talk, publication...
+      page_type: post
+      # Choose how many pages you would like to display (0 = all pages)
+      count: 6
+      # Filter on criteria
       filters:
-        folders:
-          - publication
-        publication_type: 'article-journal'
+        author: ""
+        category: ""
+        tag: ""
+        exclude_featured: false
+        exclude_future: false
+        exclude_past: false
+        publication_type: ""
+      # Choose how many pages you would like to offset by
+      offset: 0
+      # Page order: descending (desc) or ascending (asc) date.
+      order: desc
     design:
-      columns: '2'
+      # Choose a layout view
+      view: card
+      # Reduce spacing
+      spacing:
+        padding: [64px, 64px, 0, 64px]
   
   - block: collection
     content:
