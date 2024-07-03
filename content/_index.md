@@ -11,7 +11,7 @@ design:
 
 # Page sections
 sections:
-  - block: resume-biography
+  - block: resume-biography-3
     content:
       username: admin
       # Show a call-to-action button under your biography? (optional)
