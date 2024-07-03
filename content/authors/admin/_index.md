@@ -51,14 +51,14 @@ interests:
 
 education:
   - area: PhD Artificial Intelligence
-    institution: Pohang University of Science and Technology (POSTECH)
+    institution: POSTECH
     date_start: 2024-03-01
     date_end: ""
     summary: |
       Advisor: [Prof. Suha Kwak](https://suhakwak.github.io/). \
       GPA: -
   - area: MSc Artificial Intelligence
-    institution: Pohang University of Science and Technology (POSTECH)
+    institution: POSTECH
     date_start: 2021-09-01
     date_end: 2024-02-28
     summary: |
