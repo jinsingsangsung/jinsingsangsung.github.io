@@ -76,7 +76,7 @@ education:
       GPA: 3.98/4.5
 work:
   - position: Research Intern
-    company_name: Naver CLOUD
+    company_name: NAVER Cloud
     company_url: ''
     company_logo: ''
     date_start: 2023-01-02
