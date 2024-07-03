@@ -78,7 +78,7 @@ sections:
       subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
       text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
   
-  - block: 'github.cqelab.collection'
+  - block: 'github.cqelab.resume-projects'
     content:
       title: Recent CQE News
       subtitle: ''
