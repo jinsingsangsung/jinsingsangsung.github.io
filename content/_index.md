@@ -80,7 +80,7 @@ sections:
         author: ""
         exclude_featured: false
     design:
-      view: compact
+      view: citation
       columns: '2'  
   - block: experience
     content:
