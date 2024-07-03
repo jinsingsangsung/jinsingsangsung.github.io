@@ -67,6 +67,16 @@ sections:
       # Reduce spacing
       spacing:
         padding: [5, 5, 5, 5]          
+  - block: markdown
+    content:
+      title: Publications
+      subtitle: A subtitle
+      text: Add your Section 2 content here...      
+  - block: markdown
+    content:
+      title: Publications
+      subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
+      text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
   - block: collection
     content:
       title: Publications
@@ -80,8 +90,8 @@ sections:
         author: ""
         exclude_featured: false
     design:
-      view: citation
-      columns: '2'  
+      view: compact
+      columns: '2'
   - block: experience
     content:
       username: admin
