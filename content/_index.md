@@ -67,7 +67,7 @@ sections:
       # Reduce spacing
       spacing:
         padding: [5, 5, 5, 5]          
-  - block: collection
+  - block: citation
     content:
       title: Publications
       text: ""
