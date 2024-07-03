@@ -67,7 +67,7 @@ sections:
       # Reduce spacing
       spacing:
         padding: [5, 5, 5, 5]          
-  - block: citation
+  - block: collection
     content:
       title: Publications
       text: ""
@@ -80,7 +80,7 @@ sections:
         author: ""
         exclude_featured: false
     design:
-      view: list
+      view: compact
       columns: '2'  
   - block: experience
     content:
