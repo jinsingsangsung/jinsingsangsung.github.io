@@ -77,6 +77,19 @@ sections:
       title: Publications
       subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
       text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
+  
+  - block: collection
+    id: journal-articles
+    content:
+      title: 📝 Journal Article
+      subtitle: '[All Journal Articles >>](/publication/#article-journal)'
+      filters:
+        folders:
+          - publication
+        publication_type: 'article-journal'
+    design:
+      columns: '2'
+  
   - block: collection
     content:
       title: Publications
