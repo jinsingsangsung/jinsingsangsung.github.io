@@ -5,7 +5,7 @@
 ############################
 
 imports:
-  - path: github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy-plugin-netlify
+  - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-plugin-netlify
   - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-tailwind
   # - path: github.com/CQElab/CQE-hugo-blox
 
