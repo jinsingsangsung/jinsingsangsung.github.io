@@ -78,11 +78,10 @@ sections:
       subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
       text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
   
-  - block: collection
+  - block: github.CQElab.collection
     id: journal-articles
     content:
-      title: 📝 Journal Article
-      subtitle: '[All Journal Articles >>](/publication/#article-journal)'
+      title: 📝 Publications
       filters:
         folders:
           - publication
