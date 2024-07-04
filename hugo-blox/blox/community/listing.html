@@ -14,34 +14,34 @@
 
   <div class="grid-sizer"></div>
   <div class="grid-item">
-    {% if $item.Params.redirect -%}
+    {{ if $item.Params.redirect }}
     <a href="{{ $item.Params.redirect }}">
-        {%- else -%}
+        {{ else }}
         <a href="{{ $item.RelPermalink }}" class="underline">{{ $item.Title }}</a>
-            {%- endif %}
+            {{ end }}
             <div class="card hoverable">
-                {%- if $item.Params.featured %}
-                {%- include "figure.html"
+                {{ if $item.Params.featured }}
+                {{ include "figure.html"
                     path=$item.Params.img
-                    alt="project thumbnail" -%}
-                {%- endif %}
+                    alt="project thumbnail" }}
+                {{ end }}
                 <div class="card-body">
                     <h2 class="card-title text-lowercase">{{ $item.Params.title }}</h2>
                     <p class="card-text">{{ $item.Params.summary }}</p>
                     <div class="row ml-1 mr-1 p-0">
-                        {%- if $item.Params.url_code -%}
+                        {{ if $item.Params.url_code }}
                         <div class="github-icon">
                             <div class="icon" data-toggle="tooltip" title="Code Repository">
                                 <a href="{{ $item.Params.url_code }}"><i class="fab fa-github gh-icon"></i></a>
                             </div>
-                            {%- if $item.Params.github_stars -%}
+                            {{ if $item.Params.github_stars }}
                             <span class="stars" data-toggle="tooltip" title="GitHub Stars">
                                 <i class="fas fa-star"></i>
                                 <span id="{{ $item.Params.github_stars }}-stars"></span>
                             </span>
-                            {%- endif %}
+                            {{ end }}
                         </div>
-                        {%- endif %}
+                        {{ end }}
                     </div>
                 </div>
             </div>
