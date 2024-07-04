@@ -14,15 +14,15 @@
 
   <div class="grid-sizer"></div>
   <div class="grid-item"></div>
-    {% if item.Params.redirect -%}
-    <a href="{{ item.Params.redirect }}">
+    {% if $item.Params.redirect -%}
+    <a href="{{ $item.Params.redirect }}">
         {%- else -%}
         <a href="{{ $item.RelPermalink }}" class="underline">{{ $item.Title }}</a>
             {%- endif %}
             <div class="card hoverable">
-                {%- if item.Params.featured %}
+                {%- if $item.Params.featured %}
                 {%- include figure.html
-                    path=item.Params.img
+                    path=$item.Params.img
                     alt="project thumbnail" -%}
                 {%- endif %}
                 <div class="card-body">
