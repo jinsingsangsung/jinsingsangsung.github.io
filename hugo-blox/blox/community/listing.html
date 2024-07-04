@@ -5,7 +5,7 @@
 {{/* Initialise */}}
 
 {{ define "figure"}}
-    {{ $img_path := . | remove: ".jpg" | remove: ".jpeg" | remove: ".png" | remove: ".tiff" }}
+    {{ $img_path := . | replaceRE "\.(jpg|jpeg|png|tiff)$" "" }}
     {{ $class := .class | default "" }}
     {{ $width := .width | default "auto" }}
     {{ $height := .height | default "auto" }}
