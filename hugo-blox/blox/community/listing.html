@@ -19,11 +19,11 @@
     <figure>
         <picture>
             {{ if site.imagemagick.enabled }}
-            {{ for i in site.imagemagick.widths }}
+            {{ range site.imagemagick.widths }}
                 <source 
                     class="responsive-img-srcset"
-                    media="($max-width: {{ i }}px)" 
-                    srcset="{{ $img_path | relative_url }}-{{ i }}.webp"
+                    media="($max-width: {{ . }}px)" 
+                    srcset="{{ $img_path | relative_url }}-{{ . }}.webp"
                 />
             {{ end }}
             {{ end }}
@@ -31,16 +31,16 @@
             <!-- Fallback to the original file -->
             <img 
                 src="{{ include.path | relative_url }}"
-                {{ if $class }}class="{{ $class }}"{{ endif }}  
-                {{ if $width }}width="{{ $width }}"{{ else }}width="auto"{{ endif }} 
-                {{ if $height }}height="{{ $height }}"{{ else }}height="auto"{{ endif }} 
-                {{ if $min-width }}min-width="{{ $min-width }}"{{ endif }} 
-                {{ if $min-height }}min-height="{{ $min-height }}"{{ endif }} 
-                {{ if $max-width }}max-width="{{ $max-width }}"{{ endif }} 
-                {{ if $max-height }}height="{{ $max-height }}"{{ endif }} 
-                {{ if $alt }}alt="{{ $alt }}"{{ endif }} 
-                {{ if $title }}title="{{ $title }}"{{ endif }} 
-                {{ if $zoomable }}data-zoomable{{ endif }}
+                {{ if $class }}class="{{ $class }}"{{ end }}  
+                {{ if $width }}width="{{ $width }}"{{ else }}width="auto"{{ end }} 
+                {{ if $height }}height="{{ $height }}"{{ else }}height="auto"{{ end }} 
+                {{ if $min-width }}min-width="{{ $min-width }}"{{ end }} 
+                {{ if $min-height }}min-height="{{ $min-height }}"{{ end }} 
+                {{ if $max-width }}max-width="{{ $max-width }}"{{ end }} 
+                {{ if $max-height }}height="{{ $max-height }}"{{ end }} 
+                {{ if $alt }}alt="{{ $alt }}"{{ end }} 
+                {{ if $title }}title="{{ $title }}"{{ end }} 
+                {{ if $zoomable }}data-zoomable{{ end }}
                 onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
             />
 
