@@ -23,7 +23,7 @@
             {{ range site.imagemagick.widths }}
                 <source 
                     class="responsive-img-srcset"
-                    media="($max-width: {{ . }}px)" 
+                    media="($maxWidth: {{ . }}px)" 
                     srcset="{{ $img_path | $rel_url }}-{{ . }}.webp"
                 />
             {{ end }}
@@ -35,10 +35,10 @@
                 {{ if $class }}class="{{ $class }}"{{ end }}  
                 {{ if $width }}width="{{ $width }}"{{ else }}width="auto"{{ end }} 
                 {{ if $height }}height="{{ $height }}"{{ else }}height="auto"{{ end }} 
-                {{ if $min-width }}min-width="{{ $min-width }}"{{ end }} 
-                {{ if $min-height }}min-height="{{ $min-height }}"{{ end }} 
-                {{ if $max-width }}max-width="{{ $max-width }}"{{ end }} 
-                {{ if $max-height }}height="{{ $max-height }}"{{ end }} 
+                {{ if $minWidth }}minWidth="{{ $minWidth }}"{{ end }} 
+                {{ if $minHeight }}minHeight="{{ $minHeight }}"{{ end }} 
+                {{ if $maxWidth }}maxWidth="{{ $maxWidth }}"{{ end }} 
+                {{ if $maxHeight }}height="{{ $maxHeight }}"{{ end }} 
                 {{ if $alt }}alt="{{ $alt }}"{{ end }} 
                 {{ if $title }}title="{{ $title }}"{{ end }} 
                 {{ if $zoomable }}data-zoomable{{ end }}
