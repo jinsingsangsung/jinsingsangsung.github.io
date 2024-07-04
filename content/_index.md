@@ -76,33 +76,35 @@ sections:
     content:
       title: Publications
       subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
-      text: ![image](/content/publication/conference-paper/featured.jpg) {: style="float: left; margin-right: 1em;"}
+      text: 
+  ---
+      ![image](/content/publication/conference-paper/featured.jpg){: style="float: left; margin-right: 1em;"}
 
   
-  - block: collection
-    content:
-      title: Publications
-      text: ""
-      filters:
-        folders:
-          - publication    
-        tag: ""
-        category: ""
-        publication_type: ""
-        author: ""
-        exclude_featured: false
-    design:
-      view: compact
-      columns: '2'
-  - block: experience
-    content:
-      username: admin
-    design:
-      # Hugo date format
-      date_format: 'January 2006'
-      # Education or Experience section first?
-      # is_education_first: True
-      columns: '2' 
+  # - block: collection
+  #   content:
+  #     title: Publications
+  #     text: ""
+  #     filters:
+  #       folders:
+  #         - publication    
+  #       tag: ""
+  #       category: ""
+  #       publication_type: ""
+  #       author: ""
+  #       exclude_featured: false
+  #   design:
+  #     view: compact
+  #     columns: '2'
+  # - block: experience
+  #   content:
+  #     username: admin
+  #   design:
+  #     # Hugo date format
+  #     date_format: 'January 2006'
+  #     # Education or Experience section first?
+  #     # is_education_first: True
+  #     columns: '2' 
 
   # - block: skills
   #   content:
@@ -120,4 +122,4 @@ sections:
   #   content:
   #     title: Languages
   #     username: admin
----
+  #  -->
