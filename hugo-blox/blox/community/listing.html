@@ -4,6 +4,53 @@
 
 {{/* Initialise */}}
 
+{{ define "figure"}}
+    {{ $img_path := . | remove: ".jpg" | remove: ".jpeg" | remove: ".png" | remove: ".tiff" }}
+    {{ $class := .class | default "" }}
+    {{ $width := .width | default "auto" }}
+    {{ $height := .height | default "auto" }}
+    {{ $minWidth := .minWidth }}
+    {{ $minHeight := .minHeight }}
+    {{ $maxWidth := .maxWidth }}
+    {{ $maxHeight := .maxHeight }}
+    {{ $zoomable := .zoomable | default false }}
+    {{ $caption := .caption | default false }}
+    {{ $alt := .alt | default "project thumbnail" }}
+    <figure>
+        <picture>
+            {{ if site.imagemagick.enabled }}
+            {{ for i in site.imagemagick.widths }}
+                <source 
+                    class="responsive-img-srcset"
+                    media="($max-width: {{ i }}px)" 
+                    srcset="{{ $img_path | relative_url }}-{{ i }}.webp"
+                />
+            {{ end }}
+            {{ end }}
+
+            <!-- Fallback to the original file -->
+            <img 
+                src="{{ include.path | relative_url }}"
+                {{ if $class }}class="{{ $class }}"{{ endif }}  
+                {{ if $width }}width="{{ $width }}"{{ else }}width="auto"{{ endif }} 
+                {{ if $height }}height="{{ $height }}"{{ else }}height="auto"{{ endif }} 
+                {{ if $min-width }}min-width="{{ $min-width }}"{{ endif }} 
+                {{ if $min-height }}min-height="{{ $min-height }}"{{ endif }} 
+                {{ if $max-width }}max-width="{{ $max-width }}"{{ endif }} 
+                {{ if $max-height }}height="{{ $max-height }}"{{ endif }} 
+                {{ if $alt }}alt="{{ $alt }}"{{ endif }} 
+                {{ if $title }}title="{{ $title }}"{{ endif }} 
+                {{ if $zoomable }}data-zoomable{{ endif }}
+                onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
+            />
+
+        </picture>
+        
+        {{ if $caption }} <figcaption class="caption">{{ $caption }}</figcaption>{{ end }}
+    
+    </figure>
+
+
 {{ define "pub" }}
   {{ $page := .page }}
   {{ $item := .item }}
@@ -21,9 +68,7 @@
             {{ end }}
             <div class="card hoverable">
                 {{ if $item.Params.featured }}
-                {{ include "figure.html"
-                    path=$item.Params.img
-                    alt="project thumbnail" }}
+                {{ template "figure" ($item.Params.img) }}
                 {{ end }}
                 <div class="card-body">
                     <h2 class="card-title text-lowercase">{{ $item.Params.title }}</h2>

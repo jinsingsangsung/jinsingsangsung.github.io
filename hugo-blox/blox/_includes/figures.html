@@ -1,0 +1,4 @@
+{{ $img_path := .page }}
+{{ $author_page := .author_page }}
+{{ $site_type := site.Params.marketing.seo.site_type | default "Person" }}
+{{- $has_profile := not (eq nil $author_page.Params.superuser) -}}
