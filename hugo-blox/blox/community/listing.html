@@ -5,17 +5,18 @@
 {{/* Initialise */}}
 
 {{ define "figure"}}
-    {{ $img_path := replace . "jpg" ""}}
-    {{ $class := .class | default "" }}
-    {{ $width := .width | default "auto" }}
-    {{ $height := .height | default "auto" }}
-    {{ $minWidth := .minWidth }}
-    {{ $minHeight := .minHeight }}
-    {{ $maxWidth := .maxWidth }}
-    {{ $maxHeight := .maxHeight }}
-    {{ $zoomable := .zoomable | default false }}
-    {{ $caption := .caption | default false }}
-    {{ $alt := .alt | default "project thumbnail" }}
+    {{ $img_path := replace .img "jpg" ""}}
+    {{ $class := .img.class | default "" }}
+    {{ $width := .img.width | default "auto" }}
+    {{ $height := .img.height | default "auto" }}
+    {{ $minWidth := .img.minWidth }}
+    {{ $minHeight := .img.minHeight }}
+    {{ $maxWidth := .img.maxWidth }}
+    {{ $maxHeight := .img.maxHeight }}
+    {{ $zoomable := .img.zoomable | default false }}
+    {{ $caption := .img.caption | default false }}
+    {{ $alt := .img.alt | default "project thumbnail" }}
+    {{ $rel_url := .rel_url | default "" }}
     <figure>
         <picture>
             {{ if site.imagemagick.enabled }}
@@ -23,14 +24,14 @@
                 <source 
                     class="responsive-img-srcset"
                     media="($max-width: {{ . }}px)" 
-                    srcset="{{ $img_path | relative_url }}-{{ . }}.webp"
+                    srcset="{{ $img_path | $rel_url }}-{{ . }}.webp"
                 />
             {{ end }}
             {{ end }}
 
             <!-- Fallback to the original file -->
             <img 
-                src="{{ include.path | relative_url }}"
+                src="{{ $ath | $rel_url }}"
                 {{ if $class }}class="{{ $class }}"{{ end }}  
                 {{ if $width }}width="{{ $width }}"{{ else }}width="auto"{{ end }} 
                 {{ if $height }}height="{{ $height }}"{{ else }}height="auto"{{ end }} 
@@ -68,7 +69,7 @@
             {{ end }}
             <div class="card hoverable">
                 {{ if $item.Params.featured }}
-                {{ template "figure" ($item.Params.img) }}
+                {{ template "figure" (dict "img" $item.Params.img "rel_url" $item.RelPermalink) }}
                 {{ end }}
                 <div class="card-body">
                     <h2 class="card-title text-lowercase">{{ $item.Params.title }}</h2>
