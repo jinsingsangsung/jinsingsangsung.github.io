@@ -3,6 +3,20 @@
 {{/* License: https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md */}}
 
 {{/* Initialise */}}
+
+{{ define "pub" }}
+  {{ $page := .page }}
+  {{ $item := .item }}
+  {{ $index := .index }}
+  {{ $config := .config }}
+  
+  <div class="custom-item">
+    <h2>{{ $item.title }}</h2>
+    <p>{{ $item.abstract }}</p>
+    <a href="{{ $item.Permalink }}">Read more</a>
+  </div>
+{{ end }}
+
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
 {{ $view := $block.design.view | default "card" }}
@@ -81,6 +95,7 @@
 
 {{ $columns := $block.design.columns | default "2" }}
 
+
 {{ if $block.content.title }}
 <div class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center">
 
@@ -95,13 +110,13 @@
 <div class="flex flex-col items-center">
 
   {{ $config := dict "columns" ($block.design.columns | default 2) "len" (len $query) "fill_image" ($block.design.fill_image | default true) }}
-  {{ partial "functions/render_view" (dict "fragment" "start" "page" $block "item" . "view" $view "config" $config) }}
+  <!-- {{ template "functions/render_view" (dict "fragment" "start" "page" $block "item" . "view" $view "config" $config) }} -->
 
   {{ range $index, $item := $query }}
-    {{ partial "functions/render_view" (dict "page" $block "item" . "view" $view "index" $index "config" $config) }}
+    {{ template "pub" (dict "page" $block "item" . "view" $view "index" $index "config" $config) }}
   {{end}}
 
-  {{ partial "functions/render_view" (dict "fragment" "end" "page" $block "item" . "view" $view) }}
+  <!-- {{ partial "functions/render_view" (dict "fragment" "end" "page" $block "item" . "view" $view) }} -->
 
 </div>
 
