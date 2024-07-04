@@ -31,7 +31,7 @@
 
             <!-- Fallback to the original file -->
             <img 
-                src="{{ $image_path | $rel_url }}"
+                src="{{ $img_path | $rel_url }}"
                 {{ if $class }}class="{{ $class }}"{{ end }}  
                 {{ if $width }}width="{{ $width }}"{{ else }}width="auto"{{ end }} 
                 {{ if $height }}height="{{ $height }}"{{ else }}height="auto"{{ end }} 
