@@ -21,7 +21,7 @@
             {%- endif %}
             <div class="card hoverable">
                 {%- if $item.Params.featured %}
-                {%- include figure.html
+                {%- include "figure.html"
                     path=$item.Params.img
                     alt="project thumbnail" -%}
                 {%- endif %}

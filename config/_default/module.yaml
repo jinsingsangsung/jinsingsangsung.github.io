@@ -19,9 +19,6 @@ mounts:
   - source: hugo-blox/blox
     target: assets/dist/community/blox/
     includeFiles: '**.css'
-  - source: hugo-blox/blox/_pages
-    target: layouts/_pages
-    includeFiles: '**.md'
   - source: layouts
     target: layouts
   - source: assets
