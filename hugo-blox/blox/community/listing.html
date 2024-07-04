@@ -10,11 +10,14 @@
   {{ $index := .index }}
   {{ $config := .config }}
   
-  <div class="custom-item">
-    <h2>{{ $item.title }}</h2>
-    <p>{{ $item.abstract }}</p>
-    <a href="{{ $item.Permalink }}">Read more</a>
-  </div>
+  {{ $has_attachments := partial "functions/has_attachments" $item }}
+
+  <div class="grid-sizer"></div>
+  <div class="grid-item"></div>
+    <h2>{{ $item.Params.title }}</h2>
+    <p>{{ $item.Params.abstract }}</p>
+    <a href="{{ $item.RelPermalink }}" class="underline">{{ $item.Title }}</a>.
+  
 {{ end }}
 
 {{ $page := .wcPage }}
