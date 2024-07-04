@@ -72,15 +72,15 @@ sections:
   #     title: Publications
   #     subtitle: A subtitle
   #     text: Add your Section 2 content here...      
-  - block: markdown
-    content:
-      title: Publications
-      subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
-      text:
-        ![image](/content/publication/conference-paper/featured.jpg) Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
+  # - block: markdown
+  #   content:
+  #     title: Publications
+  #     subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
+  #     text:
+  #       ![image](/content/publication/conference-paper/featured.jpg) Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
 
   
-  - block: collection
+  - block: listing
     content:
       title: Publications
       text: ""
