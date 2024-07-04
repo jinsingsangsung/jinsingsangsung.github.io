@@ -79,7 +79,6 @@ sections:
   #     text:
   #       ![image](/content/publication/conference-paper/featured.jpg) Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
 
-  
   - block: listing
     content:
       title: Publications
