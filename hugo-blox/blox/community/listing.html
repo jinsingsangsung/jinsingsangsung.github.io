@@ -15,6 +15,7 @@
     {{ $maxHeight := .img.maxHeight }}
     {{ $zoomable := .img.zoomable | default false }}
     {{ $caption := .img.caption | default false }}
+    {{ $title := .img.title | default false }}
     {{ $alt := .img.alt | default "project thumbnail" }}
     {{ $rel_url := .rel_url | default "" }}
     <figure>
