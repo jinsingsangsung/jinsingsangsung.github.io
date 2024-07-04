@@ -13,7 +13,7 @@
   {{ $has_attachments := partial "functions/has_attachments" $item }}
 
   <div class="grid-sizer"></div>
-  <div class="grid-item"></div>
+  <div class="grid-item">
     {% if $item.Params.redirect -%}
     <a href="{{ $item.Params.redirect }}">
         {%- else -%}
