@@ -76,8 +76,8 @@ sections:
     content:
       title: Publications
       subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
-      text: 
-        ![image][def] Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
+      text:
+        ![image](/content/publication/conference-paper/featured.jpg) Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
 
   
   - block: collection
@@ -122,6 +122,3 @@ sections:
   #     title: Languages
   #     username: admin
 ---
-
-
-[def]: /content/publication/conference-paper/featured.jpg
