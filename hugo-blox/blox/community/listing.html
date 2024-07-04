@@ -5,18 +5,19 @@
 {{/* Initialise */}}
 
 {{ define "figure"}}
-    {{ $img_path := replace .img "jpg" ""}}
-    {{ $class := .img.class | default "" }}
-    {{ $width := .img.width | default "auto" }}
-    {{ $height := .img.height | default "auto" }}
-    {{ $minWidth := .img.minWidth }}
-    {{ $minHeight := .img.minHeight }}
-    {{ $maxWidth := .img.maxWidth }}
-    {{ $maxHeight := .img.maxHeight }}
-    {{ $zoomable := .img.zoomable | default false }}
-    {{ $caption := .img.caption | default false }}
-    {{ $title := .img.title | default false }}
-    {{ $alt := .img.alt | default "project thumbnail" }}
+    {{ $img_path := replace .img "jpg" "" }}
+    {{ $img := .img }}
+    {{ $class := $img.class | default "" }}
+    {{ $width := $img.width | default "auto" }}
+    {{ $height := $img.height | default "auto" }}
+    {{ $minWidth := $img.minWidth }}
+    {{ $minHeight := $img.minHeight }}
+    {{ $maxWidth := $img.maxWidth }}
+    {{ $maxHeight := $img.maxHeight }}
+    {{ $zoomable := $img.zoomable | default false }}
+    {{ $caption := $img.caption | default false }}
+    {{ $title := $img.title | default false }}
+    {{ $alt := $img.alt | default "project thumbnail" }}
     {{ $rel_url := .rel_url | default "" }}
     <figure>
         <picture>
