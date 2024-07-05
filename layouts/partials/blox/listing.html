@@ -78,11 +78,12 @@
     {{ $block.content.title | $page.RenderString }}
   </div>
 
-  {{ with $block.content.text | markdownify | $page.RenderString }}
+  $item = .block.content.text
+  <!-- {{ with $block.content.text | markdownify | $page.RenderString }} -->
   <div class="basis-3/5 article-style">
     {{- $taxonomy := "text" }}
-    {{ range $index, $value := (.GetTerms $taxonomy) }}
-    <p> {{ $value | markdownify}} </p>
+    {{ range $index, $value := ($item.GetTerms $taxonomy) }}
+    <p> {{ $value <br>| markdownify}} </p>
     {{- end -}}
   </div>
   {{ end }}
