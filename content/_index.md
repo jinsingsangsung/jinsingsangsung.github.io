@@ -43,30 +43,22 @@ sections:
     content:
       title: Recent News
       subtitle: ''
-      text: A paper on group activity recognition is accepted to CVPR 2022.
+      text: "
+      - (Jul. 2024) A paper is accepted to ECCV 2024.
+      - (Jan. 2023) I started working at NAVER Clova as a research scientist intern.
+      - (Feb. 2022) A paper is accepted to CVPR 2022.
+      - (Jan. 2022) I will be visiting Carnegie Mellon University as a visiting scholar.
+      "
       # Page type to display. E.g. post, talk, publication...
       page_type: post
-      # Choose how many pages you would like to display (0 = all pages)
-      count: 5
-      # Filter on criteria
-      filters:
-        author: ""
-        category: ""
-        tag: ""
-        exclude_featured: false
-        exclude_future: false
-        exclude_past: false
-        publication_type: ""
       # Choose how many pages you would like to offset by
       offset: 0
       # Page order: descending (desc) or ascending (asc) date.
       order: desc
     design:
       # Choose a layout view
-      view: date-title-summary
-      # Reduce spacing
-      spacing:
-        padding: [5, 5, 5, 5]          
+      view: compact
+      columns: '2'    
 
   - block: collection_custom
     content:
