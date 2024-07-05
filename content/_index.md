@@ -92,7 +92,7 @@ sections:
         author: ""
         exclude_featured: false
     design:
-      view: community/citation
+      view: community/compact
       css_class: custom-block
 
   - block: experience
