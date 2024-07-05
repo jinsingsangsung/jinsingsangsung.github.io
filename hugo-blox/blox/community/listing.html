@@ -6,7 +6,7 @@
 
 {{ define "figure"}}
     {{ $img_path := replace .img "jpg" "" -}}
-    {{ $class := .Get "class"-}}
+    {{ $class := .Get "class" -}}
     {{ $width := .Get "width" -}}
     {{ $height := .Get "height" -}}
     {{ $minWidth := .Get "minWidth" -}}
