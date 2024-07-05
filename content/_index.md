@@ -93,7 +93,7 @@ sections:
         exclude_featured: false
     design:
       view: community/citation
-      css_class: custom-block , sombra
+      css_class: custom-block
 
   - block: experience
     content:
