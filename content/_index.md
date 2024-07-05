@@ -49,6 +49,9 @@ sections:
       - (Feb. 2022) A paper is accepted to CVPR 2022.
       - (Jan. 2022) I will be visiting Carnegie Mellon University as a visiting scholar.
       "
+      filters:
+        folders:
+          - communities
     design:
       # Choose a layout view
       columns: '2'    
