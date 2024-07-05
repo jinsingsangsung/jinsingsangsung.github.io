@@ -86,11 +86,11 @@
 
   <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
     <span class="linee"></span>
-    {{ $block.content.title | emojify | $page.RenderString }}
+    {{ $block.content.title | $page.RenderString }}
     <span class="linee"></span>
   </div>
 
-  {{ with $block.content.text }}<p>{{ . | emojify | $page.RenderString }}</p>{{ end }}
+  {{ with $block.content.text }}{{ end }}
 </div>
 {{ end }}
 
