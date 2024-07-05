@@ -5,6 +5,7 @@
 {{/* Initialise */}}
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
+{{ $view := $block.design.view | default "card" }}
 
 {{ $items_offset := $block.content.offset | default 0 }}
 {{ $items_count := $block.content.count }}

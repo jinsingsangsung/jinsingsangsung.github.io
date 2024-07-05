@@ -38,7 +38,7 @@ sections:
     #     # Customize the style of your biography text
     #     style: 'text-align: justify; font-size: 0.8em;'
     #   columns: '2'
-  - block: collection
+  - block: collection_list
     id: news
     content:
       title: Recent News
@@ -49,16 +49,10 @@ sections:
       - (Feb. 2022) A paper is accepted to CVPR 2022.
       - (Jan. 2022) I will be visiting Carnegie Mellon University as a visiting scholar.
       "
-      # Page type to display. E.g. post, talk, publication...
-      page_type: talk
-      # Choose how many pages you would like to offset by
-      offset: 0
-      # Page order: descending (desc) or ascending (asc) date.
-      order: desc
     design:
       # Choose a layout view
-      view: list
       columns: '2'    
+      view: compact
 
   - block: collection_custom
     content:
