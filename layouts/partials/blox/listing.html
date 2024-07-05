@@ -63,9 +63,6 @@
 
 {{ if $block.content.title }}
 <div class="flex flex-row mx-auto max-w-prose gap-10 justify-start">
-  {{ range $index, $item := $query }}
-  {{ partial "functions/render_view" (dict "page" $block "item" . "view" ($block.design.view | default "compact") "index" $index) }}
-  {{end}}
   <div class="basis-2/5 mr-8 mb-6 text-3xl font-bold text-gray-900 dark:text-white">
     {{ $block.content.title | $page.RenderString }}
   </div>
