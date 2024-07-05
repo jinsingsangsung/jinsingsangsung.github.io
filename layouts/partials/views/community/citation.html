@@ -10,7 +10,7 @@
 {{ $resource := partial "functions/get_featured_image.html" $item }}
 {{ $anchor := $item.Params.image.focal_point | default "Center" }}
 
-<div class="publication-block view-citation flex items-start shadow-md rounded-lg">
+<div class="w-3/4 publication-block view-citation flex items-start shadow-md rounded-lg">
   {{ with $resource }}
     {{ $image := .Fill (printf "290x210 %s" $anchor) }}
     {{ if ne $image.MediaType.SubType "gif" }}{{ $image = $image.Process "webp" }}{{ end }}
@@ -26,7 +26,7 @@
         </div>
       {{ end }}
       <p class="mt-1 text-sm leading-tight font-medium text-black dark:text-white">
-        {{ ($item.Params.publication | default $item.publication) | plainify | htmlUnescape | chomp -}}
+        {{ ($item.Params.publication | default $item.Params.publication) | plainify | htmlUnescape | chomp -}}
       </p>      
       <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">
         {{- $item.Date | time.Format (site.Params.locale.date_format | default ":date_long") -}}
