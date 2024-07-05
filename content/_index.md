@@ -57,7 +57,7 @@ sections:
       order: desc
     design:
       # Choose a layout view
-      view: compact
+      view: community/compact
       columns: '2'    
 
   - block: collection_custom
