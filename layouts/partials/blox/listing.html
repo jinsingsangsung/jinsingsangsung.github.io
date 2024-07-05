@@ -19,20 +19,12 @@
 {{ $archive_page := "" }}
 
 {{/* Filters */}}
-{{ if $block.content.page_type }}
-  {{ $query = where $query "Type" $block.content.page_type }}
-  {{ $archive_page = site.GetPage "Section" $block.content.page_type }}
-{{ end }}
 {{ if $block.content.filters.tag }}
   {{ $archive_page = site.GetPage (printf "tags/%s" (urlize $block.content.filters.tag)) }}
   {{ $query = $query | intersect $archive_page.Pages }}
 {{ end }}
 {{ if $block.content.filters.category }}
   {{ $archive_page = site.GetPage (printf "categories/%s" (urlize $block.content.filters.category)) }}
-  {{ $query = $query | intersect $archive_page.Pages }}
-{{ end }}
-{{ if $block.content.filters.publication_type }}
-  {{ $archive_page = site.GetPage (printf "publication_types/%s" $block.content.filters.publication_type) }}
   {{ $query = $query | intersect $archive_page.Pages }}
 {{ end }}
 {{ if $block.content.filters.author }}
@@ -74,7 +66,7 @@
   {{ with $block.content.text }}{{ . | emojify | $page.RenderString }}{{ end }}
 
   {{ range $index, $item := $query }}
-    {{ partial "functions/render_view" (dict "page" $block "item" . "view" ($block.design.view | default "compact") "index" $index) }}
+    {{ partial "functions/render_view" (dict "page" $block "item" $query "view" ($block.design.view | default "compact") "index" $index) }}
   {{end}}
 
   
