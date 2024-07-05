@@ -43,7 +43,7 @@ sections:
     content:
       title: Recent News
       subtitle: ''
-      text: ''
+      text: A paper on group activity recognition is accepted to CVPR 2022.
       # Page type to display. E.g. post, talk, publication...
       page_type: post
       # Choose how many pages you would like to display (0 = all pages)
@@ -67,17 +67,6 @@ sections:
       # Reduce spacing
       spacing:
         padding: [5, 5, 5, 5]          
-  # - block: markdown
-  #   content:
-  #     title: Publications
-  #     subtitle: A subtitle
-  #     text: Add your Section 2 content here...      
-  # - block: markdown
-  #   content:
-  #     title: Publications
-  #     subtitle: Detector-Free Weakly-Supervised Group Activity Recognition
-  #     text:
-  #       ![image](/content/publication/conference-paper/featured.jpg) Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
 
   - block: collection_custom
     content:
