@@ -57,7 +57,7 @@ sections:
       order: desc
     design:
       # Choose a layout view
-      view: showcase
+      view: list
       columns: '2'    
 
   - block: collection_custom
