@@ -53,6 +53,7 @@ sections:
       # Choose a layout view
       columns: '2'    
       view: compact
+      css_class: custom-block
 
   - block: collection_custom
     content:
