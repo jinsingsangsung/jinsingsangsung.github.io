@@ -52,7 +52,6 @@ sections:
     design:
       columns: '2'    
       view: community/compact
-      css_class: custom-block      
 
   - block: collection_custom
     content:
