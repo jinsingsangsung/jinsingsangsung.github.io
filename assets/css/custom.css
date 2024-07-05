@@ -51,7 +51,7 @@
   
   .custom-block {
     
-    border-radius: 0px; /* Bordes redondeados */
+    border-radius: 10px; /* Bordes redondeados */
   }
   
 
@@ -77,19 +77,18 @@
     margin-bottom: 1rem;
     display: flex;
     align-items: start;
-    /* space-x: 1rem; */
+    space-x: 1rem;
   }
   
   .publication-block img {
-    /* border-radius: 0.25rem; */
+    border-radius: 0.25rem;
     width: 15rem;
     height: 10rem;
-    /* object-cover: cover; */
+    object-cover: cover;
     margin:auto;
     margin-right: 15px;
   }
-
-  /* buttons */
+  
   .publication-block a {
     text-align: left;
     text-decoration: none;
