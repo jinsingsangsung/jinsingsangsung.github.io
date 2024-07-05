@@ -82,7 +82,7 @@
 {{ $columns := $block.design.columns | default "2" }}
 
 {{ if $block.content.title }}
-<div class="-mb-6 flex flex-col items-center max-w-prose mx-auto gap-3 justify-start">
+<div class="-mt-6 flex flex-col items-center max-w-prose mx-auto gap-3 justify-start">
 
   <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
     {{ $block.content.title | $page.RenderString }}
