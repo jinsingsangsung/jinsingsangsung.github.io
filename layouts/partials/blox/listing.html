@@ -63,10 +63,8 @@
 
 {{ if $block.content.title }}
 <div class="flex flex-row mx-auto gap-2 justify-start">
-  <div dir="ltr">
-    <div class="basis-1/4 mx-8 mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-      {{ $block.content.title | $page.RenderString }}
-    </div>
+  <div class="basis-1/4 ml-8 mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+    {{ $block.content.title | $page.RenderString }}
   </div>
 
   {{ with $block.content.text }}
