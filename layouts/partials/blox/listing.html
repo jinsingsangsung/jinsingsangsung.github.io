@@ -78,7 +78,7 @@
     {{ $block.content.title | $page.RenderString }}
   </div>
 
-  {{ with $block.content.text }}
+  {{ with $block.content.text | $page.RenderString }}
   <div class="basis-3/5 article-style">
     {{ . | markdownify }}
   </div>
