@@ -26,7 +26,7 @@
         </div>
       {{ end }}
       <p class="mt-1 text-sm text-md leading-tight font-medium text-black dark:text-white">
-        {{ ($item.Params.publication_short | default $item.Params.publication_short) | plainify | htmlUnescape | chomp -}}
+        {{ ($item.Params.publication | default $item.Params.publication) | markdownify | htmlUnescape | chomp -}}
       </p>      
       <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">
         {{- $item.Date | time.Format (site.Params.locale.date_format | default ":date_long") -}}
