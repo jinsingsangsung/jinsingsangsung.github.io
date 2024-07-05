@@ -79,7 +79,7 @@ sections:
   #     text:
   #       ![image](/content/publication/conference-paper/featured.jpg) Detector-Free Weakly-Supervised Group Activity Recognition # {: style="float: left; margin-right: 1em;"}
 
-  - block: listing
+  - block: collection_custom
     content:
       title: Publications
       text: ""
@@ -92,8 +92,8 @@ sections:
         author: ""
         exclude_featured: false
     design:
-      view: compact
-      columns: '2'
+      view: community/citation
+      css_class: custom-block , sombra
   - block: experience
     content:
       username: admin
