@@ -94,6 +94,7 @@ sections:
     design:
       view: community/citation
       css_class: custom-block , sombra
+
   - block: experience
     content:
       username: admin
