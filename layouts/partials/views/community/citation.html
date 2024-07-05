@@ -20,13 +20,11 @@
   <div>
     <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="block">
       <div class="tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">{{ $item.Title }}</div>
-      <div class="article-metadata">
-        {{ if $item.Params.authors }}
-          <div class="text-sm">
-            {{ partial "page_metadata_authors" $item }}
-          </div>
-        {{ end }}
-      </div>
+      {{ if $item.Params.authors }}
+        <div class="text-sm">
+          {{ partial "page_metadata_authors" $item }}
+        </div>
+      {{ end }}
       <p class="mt-1 text-sm text-md leading-tight font-medium text-black dark:text-white">
         {{ ($item.Params.publication | default $item.Params.publication) | markdownify -}}
       </p>      
