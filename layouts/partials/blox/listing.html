@@ -61,6 +61,17 @@
 
 {{ $columns := $block.design.columns | default "2" }}
 
+{{ if $block.content.title }}
+<div class="flex flex-col items-center max-w-prose mx-auto gap-3">
+
+  <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+    {{ $block.content.title | $page.RenderString }}
+  </div>
+
+  {{ with $block.content.text }}{{ end }}
+</div>
+{{ end }}
+
 <div class="col-12 {{if eq $columns '2'}}col-lg-8{{end}}">
 
   {{ with $block.content.text }}<div class="article-style">{{ . | markdownify }}</div>{{ end }}
