@@ -44,10 +44,10 @@ sections:
       title: Recent News
       subtitle: ''
       text: "
-      - (Jul. 2024) A paper is accepted to ECCV 2024. \
-      - (Jan. 2023) I started working at Naver CLOVA as a research scientist intern. \
-      - (Feb. 2022) A paper is accepted to CVPR 2022. \
-      - (Jan. 2022) I will be visiting Carnegie Mellon University as a visiting scholar. \
+      - (Jul. 2024) A paper is accepted to ECCV 2024. <br>
+      - (Jan. 2023) I started working at Naver CLOVA as a research scientist intern. <br>
+      - (Feb. 2022) A paper is accepted to CVPR 2022. <br>
+      - (Jan. 2022) I will be visiting Carnegie Mellon University as a visiting scholar. <br>
       "
     design:
       columns: '2'    
