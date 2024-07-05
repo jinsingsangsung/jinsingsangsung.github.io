@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Jinsung Lee # Website name
-baseURL: 'https://jinsunglee.com/' # Website URL
+baseURL: 'https://jinsingsangsung.github.io' # Website URL
 
 ############################
 ## LANGUAGE
@@ -32,7 +32,7 @@ permalinks:
   authors: '/author/:slug/'
 disableAliases: true
 outputs:
-  home: [HTML, RSS, headers, redirects]
+  home: [HTML, RSS, JSON, WebAppManifest, headers, redirects]
   section: [HTML, RSS]
 imaging:
   resampleFilter: lanczos

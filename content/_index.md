@@ -54,7 +54,7 @@ sections:
           - communities
     design:
       columns: '2'    
-      view: community/compact
+      view: compact
       css_class: custom-block      
 
   - block: collection_custom
