@@ -82,7 +82,7 @@
   <div class="basis-3/5 article-style">
     {{- $taxonomy := "text" }}
     {{ range $index, $value := ($item.GetTerms $taxonomy) }}
-    <p> {{ $value <br>| markdownify}} </p>
+      {{ $value <br>| markdownify}}
     {{- end -}}
   </div>
   {{ end }}
