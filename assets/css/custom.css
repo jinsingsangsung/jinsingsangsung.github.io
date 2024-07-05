@@ -31,14 +31,14 @@
   .network-icon{
     color: var(--color-secondary-500);
   }
-  .avatar {
-    border-radius: 10px ; /* Elimina el borde redondeado */
-    object-fit: cover; /* Asegura que la imagen se ajuste correctamente dentro del contenedor */
-    box-shadow: 0 4px 8px var(--color-secondary-100); /* Agrega sombra para relieve */
-    margin: -150px -35px auto; /* Centra la imagen */
-    display: block;
+  /* .avatar { */
+    /* border-radius: 10px ; Elimina el borde redondeado */
+    /* object-fit: cover; Asegura que la imagen se ajuste correctamente dentro del contenedor */
+    /* box-shadow: 0 4px 8px var(--color-secondary-100); Agrega sombra para relieve */
+    /* margin: -150px -35px auto; Centra la imagen */
+    /* display: block; */
     /* Calidad de imagen full */;
-  }
+  /* } */
   @media (min-width: 768px) {
     .avatar {
         width: 600px; /* Ajusta el ancho para pantallas más grandes */
@@ -71,9 +71,9 @@
  
 
   .publication-block {
-    border-radius: 0.5rem;
-    box-shadow: 2 5px 5px rgba(0, 0, 0, 0.1), 2 5px 2px rgba(0, 0, 0, 0.06);
-    padding: 1rem;
+    /* border-radius: 0.5rem; */
+    /* box-shadow: 2 5px 5px rgba(0, 0, 0, 0.1), 2 5px 2px rgba(0, 0, 0, 0.06); */
+    /* padding: 1rem; */
     margin-bottom: 1rem;
     display: flex;
     align-items: start;
@@ -92,6 +92,7 @@
   .publication-block a {
     text-align: left;
     text-decoration: none;
+    text-transform: none;
   }
   
   .publication-block a:hover {
