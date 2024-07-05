@@ -1,11 +1,10 @@
-{{/* Hugo Blox: Collection */}}
-{{/* Documentation: https://hugoblox.com/blocks/ */}}
-{{/* License: https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md */}}
+{{/* Wowchemy Blocks: Collection */}}
+{{/* Documentation: https://wowchemy.com/blocks/ */}}
+{{/* License: https://github.com/wowchemy/wowchemy-hugo-themes/blob/main/LICENSE.md */}}
 
 {{/* Initialise */}}
 {{ $page := .wcPage }}
 {{ $block := .wcBlock }}
-{{ $view := $block.design.view | default "card" }}
 
 {{ $items_offset := $block.content.offset | default 0 }}
 {{ $items_count := $block.content.count }}
@@ -43,9 +42,6 @@
   {{ $archive_page = site.GetPage (printf "publication_types/%s" $block.content.filters.publication_type) }}
   {{ $query = $query | intersect $archive_page.Pages }}
 {{ end }}
-{{ if $block.content.filters.exclude_publication_type }}
-  {{ $query = $query | complement (site.GetPage (printf "publication_types/%s" $block.content.filters.exclude_publication_type)).Pages }}
-{{ end }}
 {{ if $block.content.filters.author }}
   {{ $archive_page = site.GetPage (printf "authors/%s" (urlize $block.content.filters.author)) }}
   {{ $query = $query | intersect $archive_page.Pages }}
@@ -63,7 +59,7 @@
   {{ $query = where $query "Date" "<" now }}
 {{ end }}
 
-{{ $count := len $query }}
+{{ $count := len $query }Z
 
 {{/* Sort */}}
 {{ $sort_by := $block.content.sort_by | default "Date" }}
