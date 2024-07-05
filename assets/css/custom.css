@@ -51,7 +51,7 @@
   
   .custom-block {
     
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 0px; /* Bordes redondeados */
   }
   
 
@@ -88,7 +88,8 @@
     margin:auto;
     margin-right: 15px;
   }
-  
+
+  /* buttons */
   .publication-block a {
     text-align: left;
     text-decoration: none;
