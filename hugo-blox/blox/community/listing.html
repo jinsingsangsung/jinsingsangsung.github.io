@@ -5,20 +5,26 @@
 {{/* Initialise */}}
 
 {{ define "figure"}}
-    {{ $img_path := replace .img "jpg" "" }}
-    {{ $img := .img }}
-    {{ $class := $img.class | default "" }}
-    {{ $width := $img.width | default "auto" }}
-    {{ $height := $img.height | default "auto" }}
-    {{ $minWidth := $img.minWidth }}
-    {{ $minHeight := $img.minHeight }}
-    {{ $maxWidth := $img.maxWidth }}
-    {{ $maxHeight := $img.maxHeight }}
-    {{ $zoomable := $img.zoomable | default false }}
-    {{ $caption := $img.caption | default false }}
-    {{ $title := $img.title | default false }}
-    {{ $alt := $img.alt | default "project thumbnail" }}
-    {{ $rel_url := .rel_url | default "" }}
+    {{ $img_path := replace .img "jpg" "" -}}
+    {{ $class := .Get "class"-}}
+    {{ $width := .Get "width" -}}
+    {{ $height := .Get "height" -}}
+    {{ $minWidth := .Get "minWidth" -}}
+    {{ $minHeight := .Get "minHeight" -}}
+    {{ $maxWidth := .Get "maxWidth" -}}
+    {{ $maxHeight := .Get "maxHeight" -}}
+    {{ $zoomable := .Get "zoomable" -}}
+    {{ $caption := .Get "caption" -}}
+    {{ $title := .Get "title" -}}
+    {{ $maxwidth := site.Params.imageMaxWidth -}}
+    {{ $realwidth := 0 -}}
+    {{ $realheight := 0 -}}
+    {{ $resource := false -}}
+    {{ $srcsetw := (slice) -}}
+    {{ $static := false -}}
+    {{ $alt := .Get "alt"oject thumbnail" -}}
+    {{ $rel_url := .rel_url-}}
+
     <figure>
         <picture>
             {{ if site.imagemagick.enabled }}
