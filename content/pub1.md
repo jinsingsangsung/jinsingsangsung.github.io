@@ -1,1 +1,0 @@
-![image](/content/publication/conference-paper/featured.jpg){: style="float: left; margin-right: 1em;"}
