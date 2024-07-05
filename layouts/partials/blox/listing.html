@@ -78,7 +78,7 @@
     {{ $block.content.title | $page.RenderString }}
   </div>
 
-  $item = .block.content.text
+  $item := .block.content.text
   <!-- {{ with $block.content.text | markdownify | $page.RenderString }} -->
   <div class="basis-3/5 article-style">
     {{- $taxonomy := "text" }}
