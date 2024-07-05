@@ -38,7 +38,7 @@ sections:
     #     # Customize the style of your biography text
     #     style: 'text-align: justify; font-size: 0.8em;'
     #   columns: '2'
-  - block: collection_list
+  - block: collection
     id: news
     content:
       title: Recent News
@@ -57,7 +57,7 @@ sections:
       order: desc
     design:
       # Choose a layout view
-      view: community/compact
+      view: compact
       columns: '2'    
 
   - block: collection_custom
