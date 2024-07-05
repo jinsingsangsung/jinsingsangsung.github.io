@@ -63,13 +63,15 @@
 
 {{ if $block.content.title }}
 <div class="flex flex-row mx-auto max-w-prose gap-8 justify-start">
-  <div class="basis-2/5 mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+  <div class="basis-2/5 mr-8 mb-6 text-3xl font-bold text-gray-900 dark:text-white">
     {{ $block.content.title | $page.RenderString }}
   </div>
 
+  {{ with $block.content.text }}
   <div class="basis-3/5 article-style">
-    <p>{{ $block.content.text | markdownify -}}</p>
+    {{ . | markdownify }}
   </div>
+  {{ end }}
 
 </div>
 {{ end }}
