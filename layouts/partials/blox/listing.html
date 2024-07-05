@@ -82,8 +82,7 @@
   <div class="basis-3/5 article-style">
     {{- $taxonomy := "text" }}
     {{ range $index, $value := ($block.content.text.GetTerms $taxonomy) }}
-    <!-- <p> {{ $value | markdownify}} </p> -->
-    {{ partial "page_metadata_authors" $value }}
+    <p> {{ $value | markdownify}} </p>
     {{- end -}}
   </div>
   <!-- {{ end }} -->
