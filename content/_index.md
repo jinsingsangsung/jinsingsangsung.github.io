@@ -52,7 +52,7 @@ sections:
     design:
       # Choose a layout view
       columns: '2'    
-      view: compact
+      view: community/compact
       css_class: custom-block
 
   - block: collection_custom
