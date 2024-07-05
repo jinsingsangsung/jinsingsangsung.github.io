@@ -8,6 +8,9 @@ appearance:
   mode: system
   color: blue
 
+citation:
+  citation_style: apa
+
 # SEO
 marketing:
   seo:
