@@ -254,7 +254,7 @@
   {{ $config := dict "columns" ($block.design.columns | default 2) "len" (len $query) "fill_image" ($block.design.fill_image | default true) }}
 
   {{ range $index, $item := $query }}
-    {{ template "pub" (dict "page" $block "item" . "view" $view "index" $index "config" $config) }}
+    {{ partial "project/single" (dict "page" $block "item" . "view" $view "index" $index "config" $config) }}
   {{end}}
 
 
