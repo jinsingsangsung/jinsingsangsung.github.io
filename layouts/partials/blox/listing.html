@@ -65,9 +65,5 @@
 
   {{ with $block.content.text }}{{ . | emojify | $page.RenderString }}{{ end }}
 
-  {{ range $index, $item := $query }}
-    {{ partial "functions/render_view" (dict "page" $block "item" . "view" ($block.design.view | default "compact") "index" $index) }}
-  {{end}}
-
   
 </div>
