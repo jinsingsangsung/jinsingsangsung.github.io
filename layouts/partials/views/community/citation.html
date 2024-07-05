@@ -19,7 +19,7 @@
 
   <div>
     <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="block">
-      <div class="tracking-wide text-sm text-primary-700 dark:text-primary-200 font-semibold">{{ $item.Title }}</div>
+      <div class="tracking-wide text-md text-primary-700 dark:text-primary-200 font-semibold">{{ $item.Title }}</div>
       {{ if $item.Params.authors }}
         <div class="text-sm">
           {{ partial "page_metadata_authors" $item }}
