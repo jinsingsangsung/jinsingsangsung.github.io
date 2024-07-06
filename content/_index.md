@@ -65,11 +65,8 @@ sections:
       text: ""
       filters:
         folders:
-          - publication    
+          - publication
         tag: ""
-        category: ""
-        publication_type: ""
-        author: ""
         exclude_featured: false
     design:
       view: community/citation

@@ -43,8 +43,7 @@ tags:
 
 # Display this page in the Featured widget?
 featured: true
-# img: content/publication/ClassificationMatters/combined_demo1.gif
-img: content/publication/DFWSGAR/featured.jpg
+img: content/publication/ClassificationMatters/combined_demo1.gif
 
 # Custom links (uncomment lines below)
 links:
