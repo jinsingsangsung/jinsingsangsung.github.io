@@ -78,11 +78,15 @@
     {{ $block.content.title | $page.RenderString }}
   </div>
 
-  {{ $items := split $block.content.text "," }}
+  {{ $items := split $block.content.news "," }}
+  {{ $bullets := split $block.content.date "," }}
   <div class="basis-3/5 article-style break-normal">
     <ul class="list-disc list-outside ms-8">
-      {{ range $items }}
-      <li>{{ . | markdownify | $page.RenderString }}</li>
+      {{ range $index, $item := $items }}
+      <li>
+        <span>{{ index $bullets $index }}</span>
+        <span>{{ $item | markdownify | $page.RenderString }}</span>
+      </li>
       {{ end }}
     </ul>
   </div>
