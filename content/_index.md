@@ -51,7 +51,7 @@ sections:
         "            
       news: "
          A paper is accepted to ECCV 2024.,
-         I started working at Naver CLOVA as a research scientist intern.,
+         I started working at NAVER Cloud as a research scientist intern.,
          A paper is accepted to CVPR 2022.,
          I will be visiting Carnegie Mellon University as a visiting scholar.
         "
