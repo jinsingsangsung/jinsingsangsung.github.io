@@ -82,9 +82,7 @@
   <div class="basis-3/5 article-style">
     {{- $taxonomy := "text" }}
     <ul class="list-disc">
-    {{ range $index, $value := ($item.GetTerms $taxonomy) }}
-      <li>{{ $value $item | markdownify | $page.RenderString }}</li>
-    {{- end -}}
+      <li>{{ $item | markdownify | $page.RenderString }}</li>
     </ul>
   </div>
   {{ end }}
