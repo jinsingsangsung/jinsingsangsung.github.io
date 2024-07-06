@@ -79,9 +79,8 @@
   </div>
 
   {{ $item := $block.content.text }}
-  <div class="basis-3/5 article-style">
-    {{- $taxonomy := "text" }}
-    <ul class="list-disc">
+  <div class="basis-3/5 article-style break-normal">
+    <ul class="list-disc list-outside ms-8">
       <li>{{ $item | markdownify | $page.RenderString }}</li>
     </ul>
   </div>
