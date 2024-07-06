@@ -87,8 +87,9 @@
   <div class="-mb-10 text-3xl font-bold text-gray-900 dark:text-white">
     {{ $block.content.title | $page.RenderString }}
   </div>
-
-  {{ with $block.content.text }}<p>{{ . | emojify | $page.RenderString }}</p>{{ end }}
+  {{ if $block.content.text }}
+    {{ with $block.content.text }}<p>{{ . | emojify | $page.RenderString }}</p>{{ end }}
+  {{ end }}
 </div>
 {{ end }}
 
