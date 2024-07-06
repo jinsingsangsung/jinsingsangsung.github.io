@@ -81,19 +81,15 @@
 
 {{ $columns := $block.design.columns | default "2" }}
 
-{{ if $block.content.title }}
-<div class="flex flex-col items-center max-w-prose mx-auto gap-1 justify-start">
-
+<div class="flex flex-col items-center max-w-prose mx-auto gap-1 items-center">
+  {{ if $block.content.title }}
   <div class="-mb-10 text-3xl font-bold text-gray-900 dark:text-white">
     {{ $block.content.title | $page.RenderString }}
   </div>
+  {{ end }}
   {{ if $block.content.text }}
     {{ with $block.content.text }}<p>{{ . | emojify | $page.RenderString }}</p>{{ end }}
   {{ end }}
-</div>
-{{ end }}
-
-<div class="flex flex-col items-center">
 
   {{ $config := dict "columns" ($block.design.columns | default 2) "len" (len $query) "fill_image" ($block.design.fill_image | default true) }}
   {{ partial "functions/render_view" (dict "fragment" "start" "page" $block "item" . "view" $view "config" $config) }}
