@@ -62,7 +62,6 @@ sections:
   - block: collection_custom
     content:
       title: Publications
-      text: ""
       filters:
         folders:
           - publication
