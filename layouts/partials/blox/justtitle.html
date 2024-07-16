@@ -85,9 +85,7 @@
 <div class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center">
 
   <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-    <span class="linee"></span>
     {{ $block.content.title | emojify | $page.RenderString }}
-    <span class="linee"></span>
   </div>
 
   {{ with $block.content.text }}<p>{{ . | emojify | $page.RenderString }}</p>{{ end }}
