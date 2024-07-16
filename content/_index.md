@@ -98,11 +98,11 @@ sections:
   #     title: Languages
   #     username: admin
   - block: justtitle
-  content:
-    title: Gallery
+    content:
+      title: Gallery
 
-  design:
-    css_class: custom-block
+    design:
+      css_class: custom-block
 ---
 
 {{< gallery album="gallery" resize_options="300x300" >}}
