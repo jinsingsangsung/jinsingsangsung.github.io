@@ -98,3 +98,5 @@ sections:
   #     title: Languages
   #     username: admin
 ---
+
+{{< gallery album="simatec_album" resize_options="300x300" >}}
