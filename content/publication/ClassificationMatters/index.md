@@ -50,7 +50,7 @@ links:
 - name: Project Page
   url: https://jinsingsangsung.github.io/ClassificationMatters/
 
-url_pdf: https://arxiv.org/abs/2407.19698
+url_pdf: https://arxiv.org/pdf/2407.19698
 url_code: ''
 url_dataset: ''
 url_poster: ''
