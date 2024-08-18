@@ -30,8 +30,8 @@ publishDate: '2024-07-05T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: In *European Conference of Computer Vision* 2024 *<span style="color:blue">(oral)<\span>*
-publication_short: In *ECCV 2024 <span style="color:blue">(oral)<\span>*
+publication: In *European Conference of Computer Vision* 2024 *<span style="color:#43d6dd">(oral)*
+publication_short: In *ECCV 2024 <span style="color:#43d6dd">(oral)*
 
 abstract: Video action detection (VAD) aims to detect actors and classify their actions in a video. We figure that VAD suffers more from classification rather than localization of actors. Hence, we analyze how prevailing methods form features for classification and find that they prioritize actor regions for classification, yet often overlooking the essential contextual information necessary for accurate classification. Accordingly, we propose to reduce the model's bias toward the actor itself and encourage it to pay attention to the context that is relevant to each action class. By assigning a class-dedicated query to each action class, the model can dynamically determine where to focus for effective classification. The proposed method demonstrates superior performance on three challenging benchmarks while using significantly fewer parameters and less computation.
 
