@@ -41,7 +41,7 @@ sections:
   - block: listing
     id: news
     content:
-      title: Recent News
+      title: News
       subtitle: ''
       date: "
         (Jul. 2024),
