@@ -46,7 +46,7 @@ profiles:
 
 interests:
   - Video Understanding
-  - Video Reconstruction/Generation
+  - Video Reconstruction/Generation/Editing
   - Neuro-Symbolic Learning
 
 education:
