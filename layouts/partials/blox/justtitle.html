@@ -97,7 +97,7 @@
   <div class="gallery-grid">
     {{/* Attempt to automatically load gallery images from page bundle */}}
     {{ $images := resources.Match "media/albums/gallery/*" }}
-    {{ range (sort $images "Name" "asc") }}
+    {{ range (sort $images "Name" "desc") }}
       {{ $image := .Fit "750x750" }}
       <div class="gallery-item">
         <a data-fancybox="gallery" href="{{ .RelPermalink }}">
