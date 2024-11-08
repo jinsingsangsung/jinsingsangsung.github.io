@@ -51,7 +51,7 @@ links:
   url: https://jinsingsangsung.github.io/ClassificationMatters/
 
 url_pdf: https://arxiv.org/pdf/2407.19698
-url_code: ''
+url_code: https://github.com/naver-ai/class-query-vad
 url_dataset: ''
 url_poster: ''
 url_project: https://jinsingsangsung.github.io/ClassificationMatters/
