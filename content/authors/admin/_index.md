@@ -45,9 +45,9 @@ profiles:
     url: https://soundcloud.com/jinsingsangsung    
 
 interests:
-  - Video Understanding
+  - Neural Data Compression
   - Video Reconstruction/Generation/ Editing
-  - Neuro-Symbolic Learning
+  - Neuro-Symbolic Video Understanding
 
 education:
   - area: PhD Artificial Intelligence
