@@ -45,9 +45,9 @@ profiles:
     url: https://soundcloud.com/jinsingsangsung    
 
 interests:
-  - Neural Data Compression
-  - Video Reconstruction/Generation/ Editing
-  - Neuro-Symbolic Video Understanding
+  - Compression
+  - State-Space Models
+  - Autoencoder
 
 education:
   - area: PhD Artificial Intelligence
@@ -158,4 +158,4 @@ languages:
 ---
 
 I am currently a Ph.D candidate at [POSTECH CVLab](https://cvlab.postech.ac.kr/lab/index.php) (Advisor: Prof. [Suha Kwak](https://suhakwak.github.io/)), where I am having fun doing research! \
-I am interested in understanding a video in general, such as recognizing human actions, understanding long-term context, video reconstruction/generation, etc.
+I am interested in designing a *compressive* neural networks that extract the most informative features within a fixed space of limited complexity. I believe that state-space models (SSMs) offer valuable properties for achieving this goal, and I am actively exploring their application in my work. Previously, I worked on video understanding tasks, such as human action recognition and long-term context modeling.
