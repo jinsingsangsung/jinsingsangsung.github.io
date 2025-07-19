@@ -111,6 +111,7 @@ export const getTextToAstroIcon = (text: string) => {
 		twitter: "mdi:twitter",
 		threads: "simple-icons:threads",
 		instagram: "mdi:instagram",
+		soundcloud: "mdi:soundcloud",
 		mastodon: "mdi:mastodon",
 		semanticscholar: "simple-icons:semanticscholar",
 		"this-github-repo": "mdi:github-face",
