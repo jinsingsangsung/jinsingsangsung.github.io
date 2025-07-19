@@ -241,6 +241,7 @@ export interface Column {
 	Type: string;
 	HasChildren: boolean;
 	Children: Block[];
+	ColumnRatio?: number;
 }
 
 export interface List {

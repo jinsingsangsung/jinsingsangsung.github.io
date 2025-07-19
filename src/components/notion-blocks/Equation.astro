@@ -15,5 +15,13 @@ const { block, setId = true } = Astro.props;
 	id={setId ? block.Id : undefined}
 	set:html={katex.renderToString(block.Equation.Expression, {
 		throwOnError: false,
+		displayMode: true,
+		fleqn: false,
+		macros: {
+			"\\begin{align}": "\\begin{aligned}",
+			"\\end{align}": "\\end{aligned}",
+			"\\begin{align*}": "\\begin{aligned}",
+			"\\end{align*}": "\\end{aligned}",
+		},
 	})}
 />

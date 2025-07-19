@@ -1,5 +1,7 @@
 ---
 import type { Mention } from "@/lib/interfaces.ts";
+import { generateFilePath } from "@/lib/notion/client.ts";
+import { BASE_PATH } from "@/constants.ts";
 
 export interface Props {
 	mention: Mention;
@@ -16,10 +18,23 @@ const { Name, Url } = mention.CustomEmoji;
 if (!Url) {
 	return null;
 }
+
+// Generate local path for the emoji
+let localUrl = Url;
+try {
+	const url = new URL(Url);
+	const filePath = generateFilePath(url);
+	// Convert absolute file path to relative web path
+	const relativePath = filePath.replace(process.cwd() + '/public', '');
+	localUrl = BASE_PATH + '/notion' + relativePath;
+} catch (e) {
+	// Fall back to original URL if there's an error
+	console.log('Error processing custom emoji URL:', e);
+}
 ---
 
 <img
-	src={Url}
+	src={localUrl}
 	alt={`custom emoji with name ${Name}`}
 	aria-label={`custom emoji with name ${Name}`}
 	class="no-rss mb-0.5 inline h-4 w-4 object-contain align-sub text-transparent"

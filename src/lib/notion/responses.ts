@@ -377,7 +377,9 @@ export interface BlockObject {
 	table_of_contents?: TableOfContents;
 	breadcrumb?: Record<string, never>;
 	column_list?: Record<string, never>;
-	column?: Record<string, never>;
+	column?: {
+		column_ratio?: number;
+	};
 	link_preview?: LinkPreview;
 	template?: Template;
 	link_to_page?: LinkToPage;

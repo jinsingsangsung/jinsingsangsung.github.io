@@ -1213,6 +1213,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 				Type: blockObject.type,
 				HasChildren: blockObject.has_children,
 				Children: children,
+				ColumnRatio: blockObject.column?.column_ratio,
 			};
 
 			return column;

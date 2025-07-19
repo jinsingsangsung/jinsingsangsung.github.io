@@ -3,6 +3,19 @@ import tailwindcss from "@tailwindcss/vite";
 
 import path from "path";
 import { CUSTOM_DOMAIN, BASE_PATH } from "./src/constants";
+import CustomIconDownloader from "./src/integrations/custom-icon-downloader";
+import CustomEmojiDownloader from "./src/integrations/custom-emoji-downloader";
+import EntryCacheEr from "./src/integrations/entry-cache-er";
+import PublicNotionCopier from "./src/integrations/public-notion-copier";
+import blocksHtmlCacher from "./src/integrations/block-html-cache-er";
+import DeleteBuildCache from "./src/integrations/delete-build-cache";
+import buildTimestampRecorder from "./src/integrations/build-timestamp-recorder";
+import rssContentEnhancer from "./src/integrations/rss-content-enhancer";
+import CSSWriter from "./src/integrations/theme-constants-to-css";
+import createFoldersIfMissing from "./src/integrations/create-folders-if-missing";
+import robotsTxt from "astro-robots-txt";
+import config from "./constants-config.json";
+import partytown from "@astrojs/partytown";
 const getSite = function () {
 	if (CUSTOM_DOMAIN) {
 		return new URL(BASE_PATH, `https://${CUSTOM_DOMAIN}`).toString();
@@ -24,18 +37,6 @@ const getSite = function () {
 	}
 	return new URL(BASE_PATH, "http://localhost:4321").toString();
 };
-import CustomIconDownloader from "./src/integrations/custom-icon-downloader";
-import EntryCacheEr from "./src/integrations/entry-cache-er";
-import PublicNotionCopier from "./src/integrations/public-notion-copier";
-import blocksHtmlCacher from "./src/integrations/block-html-cache-er";
-import DeleteBuildCache from "./src/integrations/delete-build-cache";
-import buildTimestampRecorder from "./src/integrations/build-timestamp-recorder";
-import rssContentEnhancer from "./src/integrations/rss-content-enhancer";
-import CSSWriter from "./src/integrations/theme-constants-to-css";
-import createFoldersIfMissing from "./src/integrations/create-folders-if-missing";
-import robotsTxt from "astro-robots-txt";
-import config from "./constants-config.json";
-import partytown from "@astrojs/partytown";
 const key_value_from_json = {
 	...config,
 };
@@ -78,6 +79,7 @@ export default defineConfig({
 		buildTimestampRecorder(),
 		EntryCacheEr(),
 		CustomIconDownloader(),
+		CustomEmojiDownloader(),
 		CSSWriter(),
 		partytown({
 			// Adds dataLayer.push as a forwarding-event.
