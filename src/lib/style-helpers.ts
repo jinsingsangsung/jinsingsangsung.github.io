@@ -111,6 +111,7 @@ export const getTextToAstroIcon = (text: string) => {
 		twitter: "mdi:twitter",
 		threads: "simple-icons:threads",
 		instagram: "mdi:instagram",
+		soundcloud: "mdi:soundcloud",
 		mastodon: "mdi:mastodon",
 		semanticscholar: "simple-icons:semanticscholar",
 		"this-github-repo": "mdi:github-face",
@@ -142,7 +143,6 @@ export const getTextToAstroIcon = (text: string) => {
 		substack: "simple-icons:substack",
 		kofi: "simple-icons:kofi",
 		"buy-me-a-coffee": "simple-icons:buymeacoffee",
-		soundcloud: "mdi:soundcloud",
 	};
 	if (text in textIconMap) {
 		return textIconMap[text];
