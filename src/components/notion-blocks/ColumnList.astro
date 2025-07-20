@@ -35,11 +35,17 @@ const flexValues = hasValidRatios
 	: [0.3, 0.7]; // test1 narrow, test2 wide
 
 const debugOutput = `Columns: ${debugInfo.totalColumns}, HasRatios: ${hasValidRatios}, FlexValues: [${flexValues.join(', ')}], RawRatios: [${columns.map(c => c.ColumnRatio || 'undefined').join(', ')}]`;
+
+// Add API debugging - let's see what each column object contains
+const apiDebug = columns.map((col, i) => `Col${i}: ${Object.keys(col).join(',')}`).join(' | ');
+const ratioDetails = columns.map((col, i) => `Col${i}_ratio: ${col.ColumnRatio ?? 'null'}`).join(' | ');
+const apiDebugOutput = `API: ${apiDebug} | RATIOS: ${ratioDetails}`;
 ---
 
 <!-- Debug info visible in the page -->
 <div style="background: #f0f0f0; padding: 8px; margin: 8px 0; font-size: 12px; border: 1px solid #ccc;">
-	<strong>Column Debug:</strong> {debugOutput}
+	<strong>Column Debug:</strong> {debugOutput}<br/>
+	<strong>API Debug:</strong> {apiDebugOutput}
 </div>
 
 <div class="mx-auto my-4 block w-full max-w-full flex-wrap gap-x-4 sm:flex md:flex-nowrap">
