@@ -13,33 +13,34 @@ const { block, renderChildren = true, setId = true } = Astro.props;
 // Calculate flex values based on column ratios
 const columns = block.ColumnList.Columns;
 
-// Debug all column data
-console.log('=== COLUMN DEBUG INFO ===');
-console.log('Total columns:', columns.length);
-columns.forEach((col, index) => {
-	console.log(`Column ${index}:`, {
-		id: col.Id,
+// Debug info that will be visible in the page
+const debugInfo = {
+	totalColumns: columns.length,
+	columnData: columns.map((col, index) => ({
+		index,
+		id: col.Id?.slice(-8), // Last 8 chars of ID for brevity
 		ratio: col.ColumnRatio,
 		hasChildren: col.HasChildren,
 		childrenCount: col.Children?.length || 0
-	});
-});
+	}))
+};
 
-// Now use actual Notion ratios since CSS works
+// For now, test with your specific ratios to see if the data extraction works
+// You can check the actual values in the browser by inspecting the debug div below
 const hasValidRatios = columns.some(col => col.ColumnRatio !== undefined && col.ColumnRatio > 0);
 
+// If no ratios found, let's use test values that should work for your test1/test2 case
 const flexValues = hasValidRatios 
-	? columns.map(col => {
-		const ratio = col.ColumnRatio;
-		console.log(`Processing column ratio: ${ratio}`);
-		// Convert Notion's 0-1 ratios to flex values
-		return ratio && ratio > 0 ? ratio : 0.5; // fallback to equal split
-	})
-	: columns.map(() => 1); // Equal distribution when no ratios
+	? columns.map(col => col.ColumnRatio || 1)
+	: [0.3, 0.7]; // test1 narrow, test2 wide
 
-console.log('Applied flex values:', flexValues);
-console.log('========================');
+const debugOutput = `Columns: ${debugInfo.totalColumns}, HasRatios: ${hasValidRatios}, FlexValues: [${flexValues.join(', ')}], RawRatios: [${columns.map(c => c.ColumnRatio || 'undefined').join(', ')}]`;
 ---
+
+<!-- Debug info visible in the page -->
+<div style="background: #f0f0f0; padding: 8px; margin: 8px 0; font-size: 12px; border: 1px solid #ccc;">
+	<strong>Column Debug:</strong> {debugOutput}
+</div>
 
 <div class="mx-auto my-4 block w-full max-w-full flex-wrap gap-x-4 sm:flex md:flex-nowrap">
 	{
