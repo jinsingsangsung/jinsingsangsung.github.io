@@ -25,11 +25,17 @@ columns.forEach((col, index) => {
 	});
 });
 
-// Test with fixed ratios first to see if the CSS works
-const testWithFixedRatios = true;
-const flexValues = testWithFixedRatios 
-	? [0.3, 0.7] // Fixed test ratios: 30% and 70%
-	: columns.map(col => col.ColumnRatio || (1 / columns.length));
+// Now use actual Notion ratios since CSS works
+const hasValidRatios = columns.some(col => col.ColumnRatio !== undefined && col.ColumnRatio > 0);
+
+const flexValues = hasValidRatios 
+	? columns.map(col => {
+		const ratio = col.ColumnRatio;
+		console.log(`Processing column ratio: ${ratio}`);
+		// Convert Notion's 0-1 ratios to flex values
+		return ratio && ratio > 0 ? ratio : 0.5; // fallback to equal split
+	})
+	: columns.map(() => 1); // Equal distribution when no ratios
 
 console.log('Applied flex values:', flexValues);
 console.log('========================');
@@ -40,7 +46,7 @@ console.log('========================');
 		block.ColumnList.Columns.map((column: interfaces.Column, index: number) => (
 			<div 
 				class="ncolumns min-w-0"
-				style={`flex: ${flexValues[index]}; border: 2px solid red; background: rgba(255,0,0,0.1);`}
+				style={`flex: ${flexValues[index]}; border: 1px dashed rgba(0,0,255,0.3);`}
 			>
 				<NotionBlocks blocks={column.Children} renderChildren={renderChildren} setId={setId} />
 			</div>
