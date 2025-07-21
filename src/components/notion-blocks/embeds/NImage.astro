@@ -19,7 +19,34 @@ if (block.NImage?.External) {
 }
 
 const plainTextCaption = block.NImage?.Caption.map((richText) => richText.PlainText).join(" ");
+
+// Debug Image block properties
+const imageDebugData = {
+	blockId: block.Id?.slice(-8),
+	blockType: block.Type,
+	allBlockProperties: Object.keys(block),
+	nImageProperties: block.NImage ? Object.keys(block.NImage) : [],
+	hasExternal: !!block.NImage?.External,
+	hasFile: !!block.NImage?.File,
+	imageType: block.NImage?.Type,
+	caption: plainTextCaption
+};
 ---
+
+<!-- Image API Debug Display -->
+<div style="background: #fff3e0; padding: 12px; margin: 12px 0; font-size: 11px; border: 2px solid #ff9800; border-radius: 4px; font-family: monospace;">
+	<strong>🖼️ IMAGE BLOCK API DEBUG:</strong><br/>
+	<div style="margin-top: 8px;">
+		<strong>Block ID:</strong> {imageDebugData.blockId}<br/>
+		<strong>Block Type:</strong> {imageDebugData.blockType}<br/>
+		<strong>All Block Properties:</strong> [{imageDebugData.allBlockProperties.join(', ')}]<br/>
+		<strong>NImage Properties:</strong> [{imageDebugData.nImageProperties.join(', ')}]<br/>
+		<strong>Image Type:</strong> {imageDebugData.imageType}<br/>
+		<strong>Has External:</strong> {imageDebugData.hasExternal}<br/>
+		<strong>Has File:</strong> {imageDebugData.hasFile}<br/>
+		<strong>Caption:</strong> {imageDebugData.caption || 'No caption'}
+	</div>
+</div>
 
 {
 	image && (
