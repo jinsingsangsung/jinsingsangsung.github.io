@@ -378,7 +378,7 @@ export interface BlockObject {
 	breadcrumb?: Record<string, never>;
 	column_list?: Record<string, never>;
 	column?: {
-		column_ratio?: number;
+		width_ratio?: number;
 	};
 	link_preview?: LinkPreview;
 	template?: Template;
