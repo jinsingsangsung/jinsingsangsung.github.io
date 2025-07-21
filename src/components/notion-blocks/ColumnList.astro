@@ -10,74 +10,22 @@ export interface Props {
 
 const { block, renderChildren = true, setId = true } = Astro.props;
 
-// Calculate flex values based on column ratios
 const columns = block.ColumnList.Columns;
 
-// Debug info that will be visible in the page
-const debugInfo = {
-	totalColumns: columns.length,
-	columnData: columns.map((col, index) => ({
-		index,
-		id: col.Id?.slice(-8), // Last 8 chars of ID for brevity
-		ratio: col.ColumnRatio,
-		hasChildren: col.HasChildren,
-		childrenCount: col.Children?.length || 0
-	}))
-};
+// Calculate flex values based on column width ratios from Notion API
+const hasValidRatios = columns.some(col => col.ColumnRatio !== undefined && col.ColumnRatio !== null && col.ColumnRatio > 0);
 
-// For now, test with your specific ratios to see if the data extraction works
-// You can check the actual values in the browser by inspecting the debug div below
-const hasValidRatios = columns.some(col => col.ColumnRatio !== undefined && col.ColumnRatio > 0);
-
-// If no ratios found, let's use test values that should work for your test1/test2 case
 const flexValues = hasValidRatios 
 	? columns.map(col => col.ColumnRatio || 1)
-	: [0.3, 0.7]; // test1 narrow, test2 wide
-
-const debugOutput = `Columns: ${debugInfo.totalColumns}, HasRatios: ${hasValidRatios}, FlexValues: [${flexValues.join(', ')}], RawRatios: [${columns.map(c => c.ColumnRatio || 'undefined').join(', ')}]`;
-
-// Add detailed API debugging - show full column objects
-const detailedColumnData = columns.map((col, i) => ({
-	index: i,
-	id: col.Id?.slice(-8),
-	type: col.Type,
-	hasChildren: col.HasChildren,
-	ratio: col.ColumnRatio,
-	childrenCount: col.Children?.length || 0,
-	allProperties: Object.keys(col)
-}));
-
-// Also try to access the raw API data if available 
-const apiDebugOutput = `Columns Found: ${columns.length}, Properties: [${columns.map(c => Object.keys(c).join(',')).join(' | ')}], Ratios: [${columns.map(c => c.ColumnRatio ?? 'null').join(', ')}]`;
+	: columns.map(() => 1); // Equal width if no ratios available
 ---
-
-<!-- Detailed API Debug info visible on the page -->
-<div style="background: #e8f4fd; padding: 12px; margin: 12px 0; font-size: 11px; border: 2px solid #1976d2; border-radius: 4px; font-family: monospace;">
-	<strong>🔍 DETAILED COLUMN API DEBUG:</strong><br/>
-	<div style="margin-top: 8px;">
-		<strong>Basic Info:</strong> {debugOutput}<br/>
-		<strong>API Summary:</strong> {apiDebugOutput}<br/>
-		<div style="margin-top: 8px;"><strong>Full Column Objects:</strong></div>
-		{detailedColumnData.map(col => (
-			<div style="margin: 8px 0; padding: 8px; background: rgba(255,255,255,0.7); border-radius: 4px;">
-				<strong>Column {col.index}:</strong><br/>
-				&nbsp;&nbsp;ID: {col.id}<br/>
-				&nbsp;&nbsp;Type: {col.type}<br/>
-				&nbsp;&nbsp;HasChildren: {col.hasChildren}<br/>
-				&nbsp;&nbsp;ColumnRatio: <span style="color: #d32f2f; font-weight: bold;">{col.ratio ?? 'null'}</span><br/>
-				&nbsp;&nbsp;Children Count: {col.childrenCount}<br/>
-				&nbsp;&nbsp;All Properties: [{col.allProperties.join(', ')}]
-			</div>
-		))}
-	</div>
-</div>
 
 <div class="mx-auto my-4 block w-full max-w-full flex-wrap gap-x-4 sm:flex md:flex-nowrap">
 	{
 		block.ColumnList.Columns.map((column: interfaces.Column, index: number) => (
 			<div 
 				class="ncolumns min-w-0"
-				style={`flex: ${flexValues[index]}; border: 1px dashed rgba(0,0,255,0.3);`}
+				style={`flex: ${flexValues[index]};`}
 			>
 				<NotionBlocks blocks={column.Children} renderChildren={renderChildren} setId={setId} />
 			</div>
