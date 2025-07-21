@@ -36,16 +36,40 @@ const flexValues = hasValidRatios
 
 const debugOutput = `Columns: ${debugInfo.totalColumns}, HasRatios: ${hasValidRatios}, FlexValues: [${flexValues.join(', ')}], RawRatios: [${columns.map(c => c.ColumnRatio || 'undefined').join(', ')}]`;
 
-// Add API debugging - let's see what each column object contains
-const apiDebug = columns.map((col, i) => `Col${i}: ${Object.keys(col).join(',')}`).join(' | ');
-const ratioDetails = columns.map((col, i) => `Col${i}_ratio: ${col.ColumnRatio ?? 'null'}`).join(' | ');
-const apiDebugOutput = `API: ${apiDebug} | RATIOS: ${ratioDetails}`;
+// Add detailed API debugging - show full column objects
+const detailedColumnData = columns.map((col, i) => ({
+	index: i,
+	id: col.Id?.slice(-8),
+	type: col.Type,
+	hasChildren: col.HasChildren,
+	ratio: col.ColumnRatio,
+	childrenCount: col.Children?.length || 0,
+	allProperties: Object.keys(col)
+}));
+
+// Also try to access the raw API data if available 
+const apiDebugOutput = `Columns Found: ${columns.length}, Properties: [${columns.map(c => Object.keys(c).join(',')).join(' | ')}], Ratios: [${columns.map(c => c.ColumnRatio ?? 'null').join(', ')}]`;
 ---
 
-<!-- Debug info visible in the page -->
-<div style="background: #f0f0f0; padding: 8px; margin: 8px 0; font-size: 12px; border: 1px solid #ccc;">
-	<strong>Column Debug:</strong> {debugOutput}<br/>
-	<strong>API Debug:</strong> {apiDebugOutput}
+<!-- Detailed API Debug info visible on the page -->
+<div style="background: #e8f4fd; padding: 12px; margin: 12px 0; font-size: 11px; border: 2px solid #1976d2; border-radius: 4px; font-family: monospace;">
+	<strong>🔍 DETAILED COLUMN API DEBUG:</strong><br/>
+	<div style="margin-top: 8px;">
+		<strong>Basic Info:</strong> {debugOutput}<br/>
+		<strong>API Summary:</strong> {apiDebugOutput}<br/>
+		<div style="margin-top: 8px;"><strong>Full Column Objects:</strong></div>
+		{detailedColumnData.map(col => (
+			<div style="margin: 8px 0; padding: 8px; background: rgba(255,255,255,0.7); border-radius: 4px;">
+				<strong>Column {col.index}:</strong><br/>
+				&nbsp;&nbsp;ID: {col.id}<br/>
+				&nbsp;&nbsp;Type: {col.type}<br/>
+				&nbsp;&nbsp;HasChildren: {col.hasChildren}<br/>
+				&nbsp;&nbsp;ColumnRatio: <span style="color: #d32f2f; font-weight: bold;">{col.ratio ?? 'null'}</span><br/>
+				&nbsp;&nbsp;Children Count: {col.childrenCount}<br/>
+				&nbsp;&nbsp;All Properties: [{col.allProperties.join(', ')}]
+			</div>
+		))}
+	</div>
 </div>
 
 <div class="mx-auto my-4 block w-full max-w-full flex-wrap gap-x-4 sm:flex md:flex-nowrap">
