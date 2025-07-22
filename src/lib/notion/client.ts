@@ -407,12 +407,6 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
 			block.Quote.Children = await getAllBlocksByBlockId(block.Id);
 		} else if (block.Type === "callout" && block.Callout && block.HasChildren) {
 			block.Callout.Children = await getAllBlocksByBlockId(block.Id);
-		} else if (block.Type === "image" && block.NImage && block.HasChildren) {
-			// Recursively get children for image blocks to check for nested width/alignment attributes
-			const children = await getAllBlocksByBlockId(block.Id);
-			if (block.NImage.RawApiDebug) {
-				block.NImage.RawApiDebug.nestedChildren = children;
-			}
 		}
 	}
 
@@ -903,19 +897,6 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
 				const image: NImage = {
 					Caption: blockObject.image.caption?.map(_buildRichText) || [],
 					Type: blockObject.image.type,
-					// Extract format properties for width and alignment
-					BlockAlignment: blockObject.format?.block_alignment,
-					BlockWidth: blockObject.format?.block_width,
-					// Store raw API response for debugging
-					RawApiDebug: {
-						keys: Object.keys(blockObject.image),
-						fullObject: blockObject.image,
-						formatData: blockObject.format || null,
-						// Capture full block object to inspect for nested properties
-						blockObjectKeys: Object.keys(blockObject),
-						fullBlockObject: blockObject,
-						hasChildren: blockObject.has_children
-					}
 				};
 				if (blockObject.image.type === "external" && blockObject.image.external) {
 					image.External = { Url: blockObject.image.external.url };
