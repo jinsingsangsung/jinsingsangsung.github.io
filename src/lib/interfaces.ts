@@ -123,6 +123,9 @@ export interface NImage {
 	External?: External;
 	Width?: number;
 	Height?: number;
+	// Format properties from Notion API
+	BlockAlignment?: string;
+	BlockWidth?: number;
 	// Temporary debug property to store raw API response
 	RawApiDebug?: any;
 }

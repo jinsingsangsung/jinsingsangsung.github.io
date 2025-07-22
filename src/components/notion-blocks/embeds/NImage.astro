@@ -20,8 +20,7 @@ if (block.NImage?.External) {
 
 const plainTextCaption = block.NImage?.Caption.map((richText) => richText.PlainText).join(" ");
 
-// Debug Image block properties - check if this image is within a column structure
-// Note: This image might be inside a ColumnList > Column structure for width control
+// Debug Image block properties - check format properties for width and alignment
 const imageDebugData = {
 	blockId: block.Id?.slice(-8),
 	blockType: block.Type,
@@ -31,13 +30,17 @@ const imageDebugData = {
 	hasFile: !!block.NImage?.File,
 	imageType: block.NImage?.Type,
 	caption: plainTextCaption,
+	// NEW FORMAT PROPERTIES
+	blockAlignment: block.NImage?.BlockAlignment,
+	blockWidth: block.NImage?.BlockWidth,
 	// Show what we have vs what we might be missing
 	currentNImageData: block.NImage ? JSON.stringify(block.NImage, null, 2) : 'No NImage data',
 	// Raw API data
 	rawApiKeys: block.NImage?.RawApiDebug?.keys || [],
 	rawApiData: block.NImage?.RawApiDebug?.fullObject || null,
-	// Note about column structure
-	columnNote: "📝 Image width in Notion is likely controlled by column_list > column structure. Check if this image appears inside a single-column layout with width_ratio."
+	formatData: block.NImage?.RawApiDebug?.formatData,
+	// Note about format properties
+	formatNote: "🎯 Testing extraction of blockObject.format?.block_alignment and blockObject.format?.block_width"
 };
 ---
 
@@ -53,6 +56,11 @@ const imageDebugData = {
 		<strong>Has External:</strong> {imageDebugData.hasExternal}<br/>
 		<strong>Has File:</strong> {imageDebugData.hasFile}<br/>
 		<strong>Caption:</strong> {imageDebugData.caption || 'No caption'}<br/>
+		<div style="margin-top: 8px; background: rgba(0,255,0,0.2); padding: 8px; border-radius: 4px;">
+			<strong>🎯 NEW FORMAT PROPERTIES:</strong><br/>
+			<strong>Block Alignment:</strong> {imageDebugData.blockAlignment ?? 'null'}<br/>
+			<strong>Block Width:</strong> {imageDebugData.blockWidth ?? 'null'}<br/>
+		</div>
 		<div style="margin-top: 8px; background: rgba(255,255,255,0.7); padding: 8px; border-radius: 4px;">
 			<strong>Current NImage Data (processed):</strong><br/>
 			<pre style="white-space: pre-wrap; margin: 4px 0;">{imageDebugData.currentNImageData}</pre>
@@ -62,10 +70,14 @@ const imageDebugData = {
 			<strong>Available Keys:</strong> [{imageDebugData.rawApiKeys.join(', ')}]<br/>
 			<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 300px; overflow-y: auto;">{imageDebugData.rawApiData ? JSON.stringify(imageDebugData.rawApiData, null, 2) : 'No raw data'}</pre>
 		</div>
+		<div style="margin-top: 8px; background: rgba(255,0,255,0.1); padding: 8px; border-radius: 4px;">
+			<strong>📐 Format Data (blockObject.format):</strong><br/>
+			<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 200px; overflow-y: auto;">{imageDebugData.formatData ? JSON.stringify(imageDebugData.formatData, null, 2) : 'No format data'}</pre>
+		</div>
 		<div style="margin-top: 8px; background: rgba(0,0,255,0.1); padding: 8px; border-radius: 4px;">
 			<strong>💡 Investigation:</strong><br/>
-			{imageDebugData.columnNote}<br/>
-			<strong>Action:</strong> Check if you see a BLUE column debug box above/below this image. If so, look at its width_ratio value - that might control this image's width!
+			{imageDebugData.formatNote}<br/>
+			<strong>Action:</strong> Check the green "NEW FORMAT PROPERTIES" and purple "Format Data" boxes above to see if block_alignment and block_width values are extracted correctly!
 		</div>
 	</div>
 </div>

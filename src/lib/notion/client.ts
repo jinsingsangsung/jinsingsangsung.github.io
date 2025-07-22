@@ -897,10 +897,14 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
 				const image: NImage = {
 					Caption: blockObject.image.caption?.map(_buildRichText) || [],
 					Type: blockObject.image.type,
+					// Extract format properties for width and alignment
+					BlockAlignment: blockObject.format?.block_alignment,
+					BlockWidth: blockObject.format?.block_width,
 					// Store raw API response for debugging
 					RawApiDebug: {
 						keys: Object.keys(blockObject.image),
-						fullObject: blockObject.image
+						fullObject: blockObject.image,
+						formatData: blockObject.format || null
 					}
 				};
 				if (blockObject.image.type === "external" && blockObject.image.external) {

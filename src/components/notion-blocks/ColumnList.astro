@@ -19,37 +19,8 @@ const flexValues = hasValidRatios
 	? columns.map(col => col.ColumnRatio || 1)
 	: columns.map(() => 1); // Equal width if no ratios available
 
-// Temporary debugging for image width investigation
-const columnDebugData = {
-	columnCount: columns.length,
-	hasValidRatios: hasValidRatios,
-	flexValues: flexValues,
-	columnDetails: columns.map((col, i) => ({
-		index: i,
-		id: col.Id?.slice(-8),
-		ratio: col.ColumnRatio,
-		childrenCount: col.Children?.length || 0,
-		childTypes: col.Children?.map(child => child.Type) || []
-	}))
-};
 ---
 
-<!-- Temporary Column Debug for Image Width Investigation -->
-<div style="background: #e3f2fd; padding: 12px; margin: 12px 0; font-size: 11px; border: 2px solid #1976d2; border-radius: 4px; font-family: monospace;">
-	<strong>🔵 COLUMN DEBUG (Image Width Investigation):</strong><br/>
-	<div style="margin-top: 8px;">
-		<strong>Column Count:</strong> {columnDebugData.columnCount}<br/>
-		<strong>Has Valid Ratios:</strong> {columnDebugData.hasValidRatios}<br/>
-		<strong>Flex Values:</strong> [{columnDebugData.flexValues.join(', ')}]<br/>
-		<div style="margin-top: 8px;"><strong>Column Details:</strong></div>
-		{columnDebugData.columnDetails.map(col => (
-			<div style="margin: 4px 0; padding: 6px; background: rgba(255,255,255,0.7); border-radius: 4px;">
-				<strong>Col{col.index}:</strong> ID={col.id}, Ratio={col.ratio ?? 'null'}, Children={col.childrenCount}<br/>
-				<strong>Child Types:</strong> [{col.childTypes.join(', ') || 'none'}]
-			</div>
-		))}
-	</div>
-</div>
 
 <div class="mx-auto my-4 block w-full max-w-full flex-wrap gap-x-4 sm:flex md:flex-nowrap">
 	{
