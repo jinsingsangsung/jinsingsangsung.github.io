@@ -123,6 +123,8 @@ export interface NImage {
 	External?: External;
 	Width?: number;
 	Height?: number;
+	// Temporary debug property to store raw API response
+	RawApiDebug?: any;
 }
 
 export interface Video {

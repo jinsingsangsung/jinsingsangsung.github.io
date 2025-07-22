@@ -897,6 +897,11 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
 				const image: NImage = {
 					Caption: blockObject.image.caption?.map(_buildRichText) || [],
 					Type: blockObject.image.type,
+					// Store raw API response for debugging
+					RawApiDebug: {
+						keys: Object.keys(blockObject.image),
+						fullObject: blockObject.image
+					}
 				};
 				if (blockObject.image.type === "external" && blockObject.image.external) {
 					image.External = { Url: blockObject.image.external.url };

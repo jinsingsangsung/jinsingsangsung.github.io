@@ -20,7 +20,8 @@ if (block.NImage?.External) {
 
 const plainTextCaption = block.NImage?.Caption.map((richText) => richText.PlainText).join(" ");
 
-// Debug Image block properties
+// Debug Image block properties - we need to access raw API data
+// The block.NImage is already processed, so we're missing raw API properties
 const imageDebugData = {
 	blockId: block.Id?.slice(-8),
 	blockType: block.Type,
@@ -29,7 +30,12 @@ const imageDebugData = {
 	hasExternal: !!block.NImage?.External,
 	hasFile: !!block.NImage?.File,
 	imageType: block.NImage?.Type,
-	caption: plainTextCaption
+	caption: plainTextCaption,
+	// Show what we have vs what we might be missing
+	currentNImageData: block.NImage ? JSON.stringify(block.NImage, null, 2) : 'No NImage data',
+	// Raw API data
+	rawApiKeys: block.NImage?.RawApiDebug?.keys || [],
+	rawApiData: block.NImage?.RawApiDebug?.fullObject || null
 };
 ---
 
@@ -44,7 +50,16 @@ const imageDebugData = {
 		<strong>Image Type:</strong> {imageDebugData.imageType}<br/>
 		<strong>Has External:</strong> {imageDebugData.hasExternal}<br/>
 		<strong>Has File:</strong> {imageDebugData.hasFile}<br/>
-		<strong>Caption:</strong> {imageDebugData.caption || 'No caption'}
+		<strong>Caption:</strong> {imageDebugData.caption || 'No caption'}<br/>
+		<div style="margin-top: 8px; background: rgba(255,255,255,0.7); padding: 8px; border-radius: 4px;">
+			<strong>Current NImage Data (processed):</strong><br/>
+			<pre style="white-space: pre-wrap; margin: 4px 0;">{imageDebugData.currentNImageData}</pre>
+		</div>
+		<div style="margin-top: 8px; background: rgba(0,255,0,0.1); padding: 8px; border-radius: 4px;">
+			<strong>🔥 Raw API Response:</strong><br/>
+			<strong>Available Keys:</strong> [{imageDebugData.rawApiKeys.join(', ')}]<br/>
+			<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 300px; overflow-y: auto;">{imageDebugData.rawApiData ? JSON.stringify(imageDebugData.rawApiData, null, 2) : 'No raw data'}</pre>
+		</div>
 	</div>
 </div>
 
