@@ -20,8 +20,8 @@ if (block.NImage?.External) {
 
 const plainTextCaption = block.NImage?.Caption.map((richText) => richText.PlainText).join(" ");
 
-// Debug Image block properties - we need to access raw API data
-// The block.NImage is already processed, so we're missing raw API properties
+// Debug Image block properties - check if this image is within a column structure
+// Note: This image might be inside a ColumnList > Column structure for width control
 const imageDebugData = {
 	blockId: block.Id?.slice(-8),
 	blockType: block.Type,
@@ -35,7 +35,9 @@ const imageDebugData = {
 	currentNImageData: block.NImage ? JSON.stringify(block.NImage, null, 2) : 'No NImage data',
 	// Raw API data
 	rawApiKeys: block.NImage?.RawApiDebug?.keys || [],
-	rawApiData: block.NImage?.RawApiDebug?.fullObject || null
+	rawApiData: block.NImage?.RawApiDebug?.fullObject || null,
+	// Note about column structure
+	columnNote: "📝 Image width in Notion is likely controlled by column_list > column structure. Check if this image appears inside a single-column layout with width_ratio."
 };
 ---
 
@@ -59,6 +61,11 @@ const imageDebugData = {
 			<strong>🔥 Raw API Response:</strong><br/>
 			<strong>Available Keys:</strong> [{imageDebugData.rawApiKeys.join(', ')}]<br/>
 			<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 300px; overflow-y: auto;">{imageDebugData.rawApiData ? JSON.stringify(imageDebugData.rawApiData, null, 2) : 'No raw data'}</pre>
+		</div>
+		<div style="margin-top: 8px; background: rgba(0,0,255,0.1); padding: 8px; border-radius: 4px;">
+			<strong>💡 Investigation:</strong><br/>
+			{imageDebugData.columnNote}<br/>
+			<strong>Action:</strong> Check if you see a BLUE column debug box above/below this image. If so, look at its width_ratio value - that might control this image's width!
 		</div>
 	</div>
 </div>
