@@ -39,8 +39,13 @@ const imageDebugData = {
 	rawApiKeys: block.NImage?.RawApiDebug?.keys || [],
 	rawApiData: block.NImage?.RawApiDebug?.fullObject || null,
 	formatData: block.NImage?.RawApiDebug?.formatData,
-	// Note about format properties
-	formatNote: "🎯 Testing extraction of blockObject.format?.block_alignment and blockObject.format?.block_width"
+	// Full block object data
+	blockObjectKeys: block.NImage?.RawApiDebug?.blockObjectKeys || [],
+	fullBlockObject: block.NImage?.RawApiDebug?.fullBlockObject || null,
+	hasChildren: block.NImage?.RawApiDebug?.hasChildren || false,
+	nestedChildren: block.NImage?.RawApiDebug?.nestedChildren || null,
+	// Note about nested investigation
+	investigationNote: "🔍 Investigating nested block children for width/alignment attributes"
 };
 ---
 
@@ -74,10 +79,25 @@ const imageDebugData = {
 			<strong>📐 Format Data (blockObject.format):</strong><br/>
 			<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 200px; overflow-y: auto;">{imageDebugData.formatData ? JSON.stringify(imageDebugData.formatData, null, 2) : 'No format data'}</pre>
 		</div>
+		<div style="margin-top: 8px; background: rgba(255,255,0,0.2); padding: 8px; border-radius: 4px;">
+			<strong>🔍 FULL BLOCK OBJECT INVESTIGATION:</strong><br/>
+			<strong>Has Children:</strong> {imageDebugData.hasChildren}<br/>
+			<strong>Block Object Keys:</strong> [{imageDebugData.blockObjectKeys.join(', ')}]<br/>
+			<div style="margin-top: 8px; background: rgba(255,255,255,0.7); padding: 8px; border-radius: 4px;">
+				<strong>Full Block Object:</strong><br/>
+				<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 300px; overflow-y: auto;">{imageDebugData.fullBlockObject ? JSON.stringify(imageDebugData.fullBlockObject, null, 2) : 'No full block data'}</pre>
+			</div>
+		</div>
+		{imageDebugData.nestedChildren && (
+			<div style="margin-top: 8px; background: rgba(0,255,255,0.2); padding: 8px; border-radius: 4px;">
+				<strong>🌳 NESTED CHILDREN ({imageDebugData.nestedChildren.length}):</strong><br/>
+				<pre style="white-space: pre-wrap; margin: 4px 0; max-height: 300px; overflow-y: auto;">{JSON.stringify(imageDebugData.nestedChildren, null, 2)}</pre>
+			</div>
+		)}
 		<div style="margin-top: 8px; background: rgba(0,0,255,0.1); padding: 8px; border-radius: 4px;">
 			<strong>💡 Investigation:</strong><br/>
-			{imageDebugData.formatNote}<br/>
-			<strong>Action:</strong> Check the green "NEW FORMAT PROPERTIES" and purple "Format Data" boxes above to see if block_alignment and block_width values are extracted correctly!
+			{imageDebugData.investigationNote}<br/>
+			<strong>Action:</strong> Check the yellow "FULL BLOCK OBJECT" section and cyan "NESTED CHILDREN" section to find width/alignment attributes!
 		</div>
 	</div>
 </div>
