@@ -10,6 +10,7 @@ import PostPreview from "@/components/blog/PostPreview.astro";
 import Icon from "@/components/Icon.astro";
 import { buildHeadings } from "@/utils";
 import TOC from "@/components/blog/TOC.astro";
+import PublicationsSection from "@/components/PublicationsSection.astro";
 import fs from "fs/promises";
 import path from "path";
 import superjson from "superjson";
@@ -205,6 +206,10 @@ if (pageFound && page.Slug === HOME_PAGE_SLUG && RECENT_POSTS_ON_HOME_PAGE) {
 										</span>
 								</section>
 						</div>
+				)}
+				
+				{page.Slug === HOME_PAGE_SLUG && (
+						<PublicationsSection />
 				)}
 		</PageLayout>
 
