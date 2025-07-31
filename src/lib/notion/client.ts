@@ -20,6 +20,7 @@ import type * as requestParams from "@/lib/notion/request-params";
 import type {
 	Database,
 	Post,
+	Publication,
 	Block,
 	Paragraph,
 	Heading1,
@@ -205,6 +206,79 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getAllPages(): Promise<Post[]> {
 	const allEntries = await getAllEntries();
 	return allEntries.filter((post) => MENU_PAGES_COLLECTION === post.Collection);
+}
+
+export async function getAllPublications(): Promise<Publication[]> {
+	// We need to fetch the raw pageObjects for publications to access publication-specific properties
+	const queryFilters: QueryFilters = {};
+
+	const params: requestParams.QueryDatabase = {
+		database_id: DATABASE_ID,
+		filter: {
+			and: [
+				{
+					property: "Published",
+					checkbox: {
+						equals: true,
+					},
+				},
+				{
+					property: "Collection",
+					select: {
+						equals: "Publication",
+					},
+				},
+				...(queryFilters?.and || []),
+			],
+			or: queryFilters?.or || undefined,
+		},
+		sorts: [
+			{
+				property: "Publish Date",
+				direction: "descending",
+			},
+		],
+		page_size: 100,
+	};
+
+	let results: responses.PageObject[] = [];
+	// eslint-disable-next-line no-constant-condition
+	while (true) {
+		const res = await retry(
+			async (bail) => {
+				try {
+					return (await client.databases.query(
+						params as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+					)) as responses.QueryDatabaseResponse;
+				} catch (error: unknown) {
+					if (error instanceof APIResponseError) {
+						if (error.status && error.status >= 400 && error.status < 500) {
+							bail(error);
+						}
+					}
+					throw error;
+				}
+			},
+			{
+				retries: numberOfRetry,
+				minTimeout: minTimeout,
+				factor: factor,
+			},
+		);
+
+		results = results.concat(res.results);
+
+		if (!res.has_more) {
+			break;
+		}
+
+		params["start_cursor"] = res.next_cursor as string;
+	}
+
+	return results
+		.filter((pageObject) => _validPageObject(pageObject))
+		.map((pageObject) => _buildPublication(pageObject))
+		.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
@@ -1310,6 +1384,49 @@ function _buildPost(pageObject: responses.PageObject): Post {
 				: "",
 	};
 	return post;
+}
+
+function _buildPublication(pageObject: responses.PageObject): Publication {
+	const prop = pageObject.properties;
+
+	let featuredImage: FileObject | null = null;
+	if (prop.FeaturedImage?.files && prop.FeaturedImage.files.length > 0) {
+		if (prop.FeaturedImage.files[0].external) {
+			featuredImage = {
+				Type: prop.FeaturedImage.type,
+				Url: prop.FeaturedImage.files[0].external.url,
+			};
+		} else if (prop.FeaturedImage.files[0].file) {
+			featuredImage = {
+				Type: prop.FeaturedImage.type,
+				Url: prop.FeaturedImage.files[0].file.url,
+				OptimizedUrl:
+					isConvImageType(prop.FeaturedImage.files[0].file.url) && OPTIMIZE_IMAGES
+						? prop.FeaturedImage.files[0].file.url.substring(
+								0,
+								prop.FeaturedImage.files[0].file.url.lastIndexOf("."),
+							) + ".webp"
+						: prop.FeaturedImage.files[0].file.url,
+				ExpiryTime: prop.FeaturedImage.files[0].file.expiry_time,
+			};
+		}
+	}
+
+	return {
+		PageId: pageObject.id,
+		Title: prop.Page?.title ? prop.Page.title.map((richText) => richText.plain_text).join("") : "",
+		Authors: prop.Authors?.rich_text && prop.Authors.rich_text.length > 0
+			? prop.Authors.rich_text.map((richText) => richText.plain_text).join("")
+			: "",
+		FeaturedImage: featuredImage,
+		ProjectPageUrl: prop["Project page"]?.url || "",
+		PDFUrl: prop.PDF?.url || "",
+		CodeUrl: prop.Code?.url || "",
+		Date: prop["Publish Date"]?.formula?.date ? prop["Publish Date"]?.formula?.date.start : "",
+		LastUpdatedTimeStamp: pageObject.last_edited_time
+			? new Date(pageObject.last_edited_time)
+			: new Date(),
+	};
 }
 
 function _buildRichText(richTextObject: responses.RichTextObject): RichText {
