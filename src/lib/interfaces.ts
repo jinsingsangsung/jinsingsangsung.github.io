@@ -28,6 +28,18 @@ export interface Post {
 	BlueSkyPostLink: string | "";
 }
 
+export interface Publication {
+	PageId: string;
+	Title: string;
+	Authors: string;
+	FeaturedImage: FileObject | null;
+	ProjectPageUrl: string;
+	PDFUrl: string;
+	CodeUrl: string;
+	Date: string;
+	LastUpdatedTimeStamp: Date;
+}
+
 export interface Block {
 	Id: string;
 	Type: BlockTypes;
