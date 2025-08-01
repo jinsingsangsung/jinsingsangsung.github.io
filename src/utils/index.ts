@@ -44,11 +44,11 @@ export async function getMenu(): Promise<
 	const pages = await getAllPages();
 	const collections = await getCollections();
 	const collectionLinks = collections.map((name) => {
-		// Special handling for Gallery collection - link directly to gallery page
+		// Special handling for Gallery collection - link directly to gallery post
 		if (name === "Gallery") {
 			return {
 				title: name,
-				path: getNavLink("/gallery"),
+				path: getNavLink("/posts/gallery"),
 			};
 		}
 		return {

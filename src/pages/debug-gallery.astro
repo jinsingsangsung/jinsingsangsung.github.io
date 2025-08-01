@@ -99,6 +99,8 @@ Database Description: {database.Description}</pre>
             <div class="highlight">
                 <p><strong>SINGLE POST REDIRECT:</strong> The Gallery collection has only 1 post, so it will redirect to:</p>
                 <pre>/{galleryPosts[0].Slug}</pre>
+                <p><strong>But this is a POST, not a PAGE! Posts are served from:</strong></p>
+                <pre>/posts/{galleryPosts[0].Slug}</pre>
             </div>
         )}
         
@@ -111,6 +113,12 @@ Database Description: {database.Description}</pre>
         {galleryPages.length > 0 && (
             <p><strong>Gallery Page Found:</strong> /{galleryPages[0].Slug}</p>
         )}
+        
+        <div class="highlight">
+            <p><strong>SOLUTION:</strong> The Gallery tab should point to:</p>
+            <pre>/posts/gallery</pre>
+            <p>Or convert the Gallery post to a Gallery page in Notion.</p>
+        </div>
     </div>
 </body>
 </html>
