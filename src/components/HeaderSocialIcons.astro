@@ -67,7 +67,7 @@ const socialLinks = mapSocialLinks(SOCIALS);
 
 {socialLinks && socialLinks.length > 0 && (
 	<>
-		<div class="flex items-center gap-x-2 ml-3 print:hidden">
+		<div class="flex items-center gap-x-1 ml-6 print:hidden">
 			{socialLinks.map(({ link, name, friendlyName, isWebmention }) => (
 				<div class="flex">
 					{friendlyName === "Email" ? (
