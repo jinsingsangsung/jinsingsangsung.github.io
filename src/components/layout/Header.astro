@@ -5,6 +5,7 @@ import { siteInfo } from "@/site.config";
 import { filePath, getNavLink } from "@/lib/blog-helpers";
 import Icon from "@/components/Icon.astro";
 import ThemeIcon from "@/components/ThemeIcon.astro";
+import HeaderSocialIcons from "@/components/HeaderSocialIcons.astro";
 
 const menuLinks = await getMenu();
 
@@ -27,44 +28,47 @@ const rss_path = getNavLink("/rss.xml");
 	class="group relative mb-8 flex w-full items-center justify-between sm:ps-[4.5rem] lg:-ml-[25%] lg:w-[150%]"
 >
 	<div class="flex sm:flex-col">
-		<a
-			href={getNavLink("/")}
-			class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
-			aria-current={url.pathname === "/" ? "page" : false}
-		>
-			{
-				siteInfo.logo && siteInfo.logo.Type === "emoji" ? (
-					<>
-						<span class="me-3 h-10 w-10 sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15">
-							{siteInfo.logo.Emoji}
-						</span>
+		<div class="flex items-center">
+			<a
+				href={getNavLink("/")}
+				class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
+				aria-current={url.pathname === "/" ? "page" : false}
+			>
+				{
+					siteInfo.logo && siteInfo.logo.Type === "emoji" ? (
+						<>
+							<span class="me-3 h-10 w-10 sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15">
+								{siteInfo.logo.Emoji}
+							</span>
+							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
+						</>
+					) : siteInfo.logo && siteInfo.logo.Type === "external" ? (
+						<>
+							<img
+								class="me-3 h-10 w-10 object-contain sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
+								loading="eager"
+								src={siteInfo.logo.Url}
+								alt="Site header image"
+							/>
+							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
+						</>
+					) : siteInfo.logo && siteInfo.logo.Type === "file" && customIconURL ? (
+						<>
+							<img
+								loading="eager"
+								src={customIconURL}
+								class="me-3 h-10 w-10 object-contain sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
+								alt="Site header image"
+							/>
+							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
+						</>
+					) : (
 						<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
-					</>
-				) : siteInfo.logo && siteInfo.logo.Type === "external" ? (
-					<>
-						<img
-							class="me-3 h-10 w-10 object-contain sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
-							loading="eager"
-							src={siteInfo.logo.Url}
-							alt="Site header image"
-						/>
-						<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
-					</>
-				) : siteInfo.logo && siteInfo.logo.Type === "file" && customIconURL ? (
-					<>
-						<img
-							loading="eager"
-							src={customIconURL}
-							class="me-3 h-10 w-10 object-contain sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
-							alt="Site header image"
-						/>
-						<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
-					</>
-				) : (
-					<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
-				)
-			}
-		</a>
+					)
+				}
+			</a>
+			<HeaderSocialIcons />
+		</div>
 		<nav
 			id="navigation-menu"
 			class="md bg-bgColor/90 text-accent absolute -inset-x-4 top-14 hidden flex-col items-end rounded-md py-2 text-base shadow-sm backdrop-blur-sm group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:rounded-none sm:py-0 sm:text-sm sm:shadow-none sm:backdrop-blur-none lg:text-base print:hidden"

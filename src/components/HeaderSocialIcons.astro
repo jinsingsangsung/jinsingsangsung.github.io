@@ -1,0 +1,104 @@
+---
+import Icon from "@/components/Icon.astro";
+import { getTextToSVGPath } from "@/lib/style-helpers";
+import { SOCIALS } from "@/constants";
+import type { SocialLink } from "@/types";
+
+const mapSocialLinks = (socialLinksObject: { [key: string]: string }): SocialLink[] => {
+	return Object.entries(socialLinksObject)
+		.map(([key, value]): SocialLink => {
+			let iconname = getTextToSVGPath(key) ? key : "web";
+			if (key === "email") {
+				return {
+					name: iconname,
+					friendlyName: key.charAt(0).toUpperCase() + key.slice(1),
+					link: value.startsWith("mailto:") ? value.replace("mailto:", "") : value,
+					isWebmention: true,
+				};
+			}
+
+			return {
+				name: iconname,
+				friendlyName: key.charAt(0).toUpperCase() + key.slice(1),
+				link: value,
+			};
+		})
+		.filter((link) => link.link);
+};
+
+const socialLinks = mapSocialLinks(SOCIALS);
+---
+
+<script>
+	function copyToClipboard(text) {
+		navigator.clipboard
+			.writeText(text)
+			.then(() => {
+				const toast = document.getElementById("header-toast");
+				if (toast) {
+					toast.classList.remove("opacity-0");
+					toast.classList.add("opacity-100");
+					setTimeout(() => {
+						toast.classList.remove("opacity-100");
+						toast.classList.add("opacity-0");
+					}, 3000);
+				}
+			})
+			.catch((err) => {
+				console.error("Could not copy text: ", err);
+			});
+	}
+
+	function handleEmailClick(event, email) {
+		event.preventDefault();
+		copyToClipboard(email);
+	}
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const emailLinks = document.querySelectorAll(".header-email-link");
+		emailLinks.forEach((link) => {
+			link.addEventListener("click", (event) => {
+				const email = link.getAttribute("data-email");
+				handleEmailClick(event, email);
+			});
+		});
+	});
+</script>
+
+{socialLinks && socialLinks.length > 0 && (
+	<>
+		<div class="flex items-center gap-x-2 ml-3 print:hidden">
+			{socialLinks.map(({ link, name, friendlyName, isWebmention }) => (
+				<div class="flex">
+					{friendlyName === "Email" ? (
+						<a
+							class="header-email-link sm:hover:text-link inline-block p-1 opacity-60 hover:opacity-100 transition-opacity"
+							href="#"
+							data-email={link}
+							rel={`noopener noreferrer ${isWebmention ? "me authn" : ""}`}
+						>
+							<Icon class="h-4 w-4" name={name} aria-label={friendlyName} focusable="false" />
+							<span class="sr-only">{friendlyName}</span>
+						</a>
+					) : (
+						<a
+							class="sm:hover:text-link inline-block p-1 opacity-60 hover:opacity-100 transition-opacity"
+							href={link}
+							target="_blank"
+							rel={`noopener noreferrer ${isWebmention ? "me authn" : ""}`}
+						>
+							<Icon class="h-4 w-4" name={name} aria-label={friendlyName} focusable="false" />
+							<span class="sr-only">{friendlyName}</span>
+						</a>
+					)}
+				</div>
+			))}
+		</div>
+		<div
+			id="header-toast"
+			class="fixed top-20 left-1/2 -translate-x-1/2 transform rounded-sm bg-gray-800 px-4 py-2 text-center text-white opacity-0 transition-opacity duration-300 z-50"
+		>
+			Email copied to clipboard
+		</div>
+	</>
+)}
