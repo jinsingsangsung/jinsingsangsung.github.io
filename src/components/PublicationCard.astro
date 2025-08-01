@@ -1,12 +1,26 @@
 ---
 import type { Publication } from "@/lib/interfaces";
 import { filePath } from "@/lib/blog-helpers";
+import PublicationRichText from "./PublicationRichText.astro";
 
 interface Props {
   publication: Publication;
 }
 
 const { publication } = Astro.props;
+
+// Process authors to highlight "Jinsung Lee"
+const processAuthors = (authorsString: string) => {
+  if (!authorsString) return "";
+  
+  const authors = authorsString.split(",").map(author => author.trim());
+  return authors.map(author => {
+    if (author === "Jinsung Lee") {
+      return `<span class="font-bold underline">${author}</span>`;
+    }
+    return author;
+  }).join(", ");
+};
 
 let imageUrl = null;
 if (publication.FeaturedImage) {
@@ -46,14 +60,12 @@ if (publication.FeaturedImage) {
       </h3>
       
       {publication.Authors && (
-        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
-          {publication.Authors}
-        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-3" set:html={processAuthors(publication.Authors)}></p>
       )}
       
-      {publication.Date && (
-        <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
-          {new Date(publication.Date).getFullYear()}
+      {publication.Venue && publication.Venue.length > 0 && (
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+          <PublicationRichText richTexts={publication.Venue} className="italic" />
         </p>
       )}
       

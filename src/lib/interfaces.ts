@@ -32,6 +32,7 @@ export interface Publication {
 	PageId: string;
 	Title: string;
 	Authors: string;
+	Venue: RichText[];
 	FeaturedImage: FileObject | null;
 	ProjectPageUrl: string;
 	PDFUrl: string;

@@ -1418,6 +1418,9 @@ function _buildPublication(pageObject: responses.PageObject): Publication {
 		Authors: prop.Authors?.rich_text && prop.Authors.rich_text.length > 0
 			? prop.Authors.rich_text.map((richText) => richText.plain_text).join("")
 			: "",
+		Venue: prop.Venue?.rich_text && prop.Venue.rich_text.length > 0
+			? prop.Venue.rich_text.map(_buildRichText)
+			: [],
 		FeaturedImage: featuredImage,
 		ProjectPageUrl: prop["Project page"]?.url || "",
 		PDFUrl: prop.PDF?.url || "",
