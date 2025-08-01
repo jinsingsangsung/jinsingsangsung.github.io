@@ -225,7 +225,7 @@ export async function getAllPublications(): Promise<Publication[]> {
 				{
 					property: "Collection",
 					select: {
-						equals: "Publication",
+						equals: "Publications",
 					},
 				},
 				...(queryFilters?.and || []),
