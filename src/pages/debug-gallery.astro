@@ -10,6 +10,12 @@ const collections = await getCollections();
 const database = await getDatabase();
 const menuLinks = await getMenu();
 
+// Get all posts to check Gallery collection content
+import { getAllPosts } from "@/lib/notion/client";
+const posts = await getAllPosts();
+
+const galleryPosts = posts.filter(post => post.Collection === 'Gallery');
+
 // Filter pages that might be Gallery-related
 const galleryPages = pages.filter(page => 
   page.Title.toLowerCase().includes('gallery') || 
@@ -49,6 +55,16 @@ Database Description: {database.Description}</pre>
     </div>
 
     <div class="section">
+        <h2>Gallery Collection Posts</h2>
+        <pre>{JSON.stringify(galleryPosts.map(p => ({
+            Title: p.Title,
+            Slug: p.Slug,
+            Collection: p.Collection,
+            Published: p.Published
+        })), null, 2)}</pre>
+    </div>
+
+    <div class="section">
         <h2>Gallery-Related Pages</h2>
         <pre>{JSON.stringify(galleryPages.map(p => ({
             Title: p.Title,
@@ -75,12 +91,26 @@ Database Description: {database.Description}</pre>
     </div>
 
     <div class="section">
-        <h2>Expected Gallery URLs</h2>
-        <p>If there's a Gallery collection, it should be accessible at:</p>
-        <pre>/collections/{slugify('Gallery')} = /collections/{slugify('Gallery')}</pre>
+        <h2>Gallery Analysis</h2>
+        <p><strong>Gallery Collection URL:</strong> /collections/{slugify('Gallery')} = /collections/{slugify('Gallery')}</p>
+        <p><strong>Gallery Posts Count:</strong> {galleryPosts.length}</p>
         
-        <p>If there's a Gallery page, it should be accessible at:</p>
-        <pre>/{galleryPages.length > 0 ? galleryPages[0].Slug : 'NO_GALLERY_PAGE_FOUND'}</pre>
+        {galleryPosts.length === 1 && (
+            <div class="highlight">
+                <p><strong>SINGLE POST REDIRECT:</strong> The Gallery collection has only 1 post, so it will redirect to:</p>
+                <pre>/{galleryPosts[0].Slug}</pre>
+            </div>
+        )}
+        
+        {galleryPosts.length === 0 && (
+            <div class="highlight">
+                <p><strong>NO POSTS FOUND:</strong> The Gallery collection has no posts!</p>
+            </div>
+        )}
+        
+        {galleryPages.length > 0 && (
+            <p><strong>Gallery Page Found:</strong> /{galleryPages[0].Slug}</p>
+        )}
     </div>
 </body>
 </html>
