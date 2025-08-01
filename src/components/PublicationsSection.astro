@@ -3,26 +3,37 @@ import { getAllPublications } from "@/lib/notion/client";
 import PublicationCard from "./PublicationCard.astro";
 
 let publications = [];
+let debugInfo = "";
 try {
   publications = await getAllPublications();
+  debugInfo = `Fetched ${publications.length} publications`;
+  if (publications.length > 0) {
+    debugInfo += ` - First: ${publications[0].Title}`;
+  }
 } catch (error) {
-  console.error("Error fetching publications:", error);
+  debugInfo = `Error fetching publications: ${error.message}`;
 }
 ---
 
-{publications.length > 0 && (
-  <section class="publications-section max-w-[708px] sm:mr-20 print:max-w-full print:mr-auto mb-12">
-    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-      Publications
-    </h2>
-    
-    <div class="space-y-6">
-      {publications.map((publication) => (
-        <PublicationCard publication={publication} />
-      ))}
-    </div>
-  </section>
-)}
+<section class="publications-section max-w-[708px] sm:mr-20 print:max-w-full print:mr-auto mb-12">
+  <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4">
+    <strong>Debug Info:</strong> {debugInfo}
+  </div>
+  
+  {publications.length > 0 && (
+    <>
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+        Publications
+      </h2>
+      
+      <div class="space-y-6">
+        {publications.map((publication) => (
+          <PublicationCard publication={publication} />
+        ))}
+      </div>
+    </>
+  )}
+</section>
 
 <style>
   .publications-section {

@@ -208,7 +208,7 @@ if (pageFound && page.Slug === HOME_PAGE_SLUG && RECENT_POSTS_ON_HOME_PAGE) {
 						</div>
 				)}
 				
-				{page.Slug === HOME_PAGE_SLUG && (
+				{!slug && (
 						<PublicationsSection />
 				)}
 		</PageLayout>
