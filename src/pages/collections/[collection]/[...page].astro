@@ -58,7 +58,8 @@ const { page, collection, description, uniqueTags, singlePageRedirect } = Astro.
 
 // If this is a single-page collection, redirect to that page
 if (singlePageRedirect) {
-		const redirectUrl = getNavLink(`/${singlePageRedirect}/`);
+		// Posts should redirect to /posts/slug, not just /slug
+		const redirectUrl = getNavLink(`/posts/${singlePageRedirect}/`);
 		// Use a client-side redirect to avoid showing redirect message
 		return new Response(
 			`<!DOCTYPE html>

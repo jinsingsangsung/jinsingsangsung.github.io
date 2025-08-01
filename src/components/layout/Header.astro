@@ -158,6 +158,13 @@ const rss_path = getNavLink("/rss.xml");
 
 			if (!isClickInsideToggleButton && event.target instanceof Node) {
 				var isClickInsideNav = navMenu.contains(event.target);
+				
+				// If click is on a navigation link, close mobile menu and allow navigation
+				if (isClickInsideNav && event.target.tagName === 'A') {
+					mainHeader.classList.remove("menu-open");
+					toggleButton.setAttribute("aria-expanded", "false");
+					return; // Allow the link to work normally
+				}
 
 				if (!isClickInsideNav && mainHeader) {
 					// If the click is outside the navMenu and mainHeader exists, remove 'menu-open' attribute
