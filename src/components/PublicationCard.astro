@@ -8,11 +8,19 @@ interface Props {
 
 const { publication } = Astro.props;
 
-const imageUrl = publication.FeaturedImage 
-  ? (publication.FeaturedImage.OptimizedUrl 
-      ? filePath(new URL(publication.FeaturedImage.OptimizedUrl))
-      : filePath(new URL(publication.FeaturedImage.Url)))
-  : null;
+let imageUrl = null;
+if (publication.FeaturedImage) {
+  try {
+    if (publication.FeaturedImage.OptimizedUrl) {
+      imageUrl = filePath(new URL(publication.FeaturedImage.OptimizedUrl));
+    } else if (publication.FeaturedImage.Url) {
+      imageUrl = filePath(new URL(publication.FeaturedImage.Url));
+    }
+  } catch (error) {
+    // Fallback to direct URL if filePath processing fails
+    imageUrl = publication.FeaturedImage.OptimizedUrl || publication.FeaturedImage.Url;
+  }
+}
 ---
 
 <div class="publication-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-transform hover:scale-105 border border-gray-200 dark:border-gray-700">
@@ -24,7 +32,11 @@ const imageUrl = publication.FeaturedImage
           alt={`Featured image for ${publication.Title}`}
           class="w-full h-32 md:h-40 object-cover rounded-lg"
           loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
         />
+        <div class="w-full h-32 md:h-40 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center text-sm text-gray-500 dark:text-gray-400" style="display: none;">
+          Image not available
+        </div>
       </div>
     )}
     

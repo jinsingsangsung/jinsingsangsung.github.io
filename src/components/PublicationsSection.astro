@@ -1,10 +1,29 @@
 ---
-import { getAllPublications } from "@/lib/notion/client";
+import { getAllPublications, processFileBlocks } from "@/lib/notion/client";
 import PublicationCard from "./PublicationCard.astro";
 
 let publications = [];
 try {
   publications = await getAllPublications();
+  
+  // Process publication images for download and optimization
+  const imageBlocks = publications
+    .filter(pub => pub.FeaturedImage && pub.FeaturedImage.Url)
+    .map(pub => ({
+      Id: pub.PageId,
+      Type: "image" as const,
+      HasChildren: false,
+      LastUpdatedTimeStamp: pub.LastUpdatedTimeStamp,
+      NImage: {
+        Caption: [],
+        Type: pub.FeaturedImage.Type,
+        File: pub.FeaturedImage,
+      },
+    }));
+    
+  if (imageBlocks.length > 0) {
+    await processFileBlocks(imageBlocks);
+  }
 } catch (error) {
   console.error("Error fetching publications:", error);
 }
