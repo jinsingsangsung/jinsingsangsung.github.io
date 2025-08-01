@@ -11,9 +11,6 @@ const menuLinks = await getMenu();
 
 const url = new URL(Astro.request.url);
 
-// Debug: Show menu links on the website
-console.log("DEBUG - Menu Links:", JSON.stringify(menuLinks, null, 2));
-
 let customIconURL: string = "";
 if (siteInfo.logo && siteInfo.logo.Type === "file") {
 	try {

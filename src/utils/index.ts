@@ -43,19 +43,19 @@ export async function getMenu(): Promise<
 > {
 	const pages = await getAllPages();
 	const collections = await getCollections();
-	
-	// Debug logging
-	console.log("DEBUG - Raw pages from Notion:", JSON.stringify(pages.map(p => ({
-		Title: p.Title,
-		Slug: p.Slug, 
-		Collection: p.Collection,
-		Rank: p.Rank
-	})), null, 2));
-	console.log("DEBUG - Collections:", JSON.stringify(collections, null, 2));
-	const collectionLinks = collections.map((name) => ({
-		title: name,
-		path: getNavLink("/collections/" + slugify(name)),
-	}));
+	const collectionLinks = collections.map((name) => {
+		// Special handling for Gallery collection - link directly to gallery page
+		if (name === "Gallery") {
+			return {
+				title: name,
+				path: getNavLink("/gallery"),
+			};
+		}
+		return {
+			title: name,
+			path: getNavLink("/collections/" + slugify(name)),
+		};
+	});
 
 	const pageLinks = pages
 		.map((page) => ({
