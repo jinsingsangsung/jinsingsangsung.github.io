@@ -1,17 +1,24 @@
 ---
-import { getAllPublications } from "@/lib/notion/client";
+import { getAllPublications, getAllEntries } from "@/lib/notion/client";
 import PublicationCard from "./PublicationCard.astro";
 
 let publications = [];
 let debugInfo = "";
+let allEntries = [];
+
 try {
+  // First, let's see all entries to understand what collections exist
+  allEntries = await getAllEntries();
+  const collections = [...new Set(allEntries.map(entry => entry.Collection))];
+  
   publications = await getAllPublications();
-  debugInfo = `Fetched ${publications.length} publications`;
+  debugInfo = `Total entries: ${allEntries.length}, Collections: [${collections.join(', ')}], Publications: ${publications.length}`;
+  
   if (publications.length > 0) {
     debugInfo += ` - First: ${publications[0].Title}`;
   }
 } catch (error) {
-  debugInfo = `Error fetching publications: ${error.message}`;
+  debugInfo = `Error: ${error.message}`;
 }
 ---
 
