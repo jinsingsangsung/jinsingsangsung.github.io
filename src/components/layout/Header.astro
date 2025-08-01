@@ -11,6 +11,9 @@ const menuLinks = await getMenu();
 
 const url = new URL(Astro.request.url);
 
+// Debug: Show menu links on the website
+console.log("DEBUG - Menu Links:", JSON.stringify(menuLinks, null, 2));
+
 let customIconURL: string = "";
 if (siteInfo.logo && siteInfo.logo.Type === "file") {
 	try {
@@ -87,6 +90,12 @@ const rss_path = getNavLink("/rss.xml");
 				))
 			}
 		</nav>
+		
+		<!-- Debug Menu Links Display -->
+		<div class="mt-4 p-2 bg-gray-100 text-xs text-black rounded">
+			<strong>DEBUG - Menu Links:</strong>
+			<pre>{JSON.stringify(menuLinks, null, 2)}</pre>
+		</div>
 	</div>
 	<div class="flex flex-row print:hidden">
 		<div
