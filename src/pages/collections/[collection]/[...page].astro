@@ -58,7 +58,28 @@ const { page, collection, description, uniqueTags, singlePageRedirect } = Astro.
 
 // If this is a single-page collection, redirect to that page
 if (singlePageRedirect) {
-		return Astro.redirect(`/${singlePageRedirect}/`);
+		const redirectUrl = getNavLink(`/${singlePageRedirect}/`);
+		// Use a client-side redirect to avoid showing redirect message
+		return new Response(
+			`<!DOCTYPE html>
+			<html>
+			<head>
+				<meta charset="utf-8">
+				<title>Redirecting...</title>
+				<meta http-equiv="refresh" content="0; url=${redirectUrl}">
+				<script>window.location.replace('${redirectUrl}');</script>
+			</head>
+			<body>
+				<p>Redirecting to <a href="${redirectUrl}">gallery</a>...</p>
+			</body>
+			</html>`,
+			{
+				status: 200,
+				headers: {
+					'Content-Type': 'text/html',
+				},
+			}
+		);
 }
 
 // Compute caching info for each post in page.data
