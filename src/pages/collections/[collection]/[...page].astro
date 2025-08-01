@@ -25,6 +25,19 @@ export const getStaticPaths = (async ({ paginate }) => {
 				collectionPosts.sort((a, b) => (a.Pinned === b.Pinned ? 0 : a.Pinned ? -1 : 1));
 				const uniqueTags = getUniqueTags(collectionPosts);
 
+				// If there's only one post in the collection, create a redirect
+				if (collectionPosts.length === 1) {
+						return [{
+								params: { collection: slugify(collection.name), page: undefined },
+								props: { 
+										collection: collection.name, 
+										description: collection.description, 
+										uniqueTags,
+										singlePageRedirect: collectionPosts[0].Slug
+								},
+						}];
+				}
+
 				return paginate(collectionPosts, {
 						params: { collection: slugify(collection.name) },
 						props: { collection: collection.name, description: collection.description, uniqueTags },
@@ -34,19 +47,25 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 interface Props {
-		page: Page<Post>;
+		page?: Page<Post>;
 		collection: string;
 		description: string;
 		uniqueTags: SelectProperty[];
+		singlePageRedirect?: string;
 }
 
-const { page, collection, description, uniqueTags } = Astro.props as Props;
+const { page, collection, description, uniqueTags, singlePageRedirect } = Astro.props as Props;
+
+// If this is a single-page collection, redirect to that page
+if (singlePageRedirect) {
+		return Astro.redirect(`/${singlePageRedirect}/`);
+}
 
 // Compute caching info for each post in page.data
 const allPosts = await getAllPosts();
 const allPostsMap: Record<string, Post> = Object.fromEntries(allPosts.map(p => [p.PageId, p]));
 
-const postsWithCacheInfo = page.data.map(post => {
+const postsWithCacheInfo = page!.data.map(post => {
 		const referencesInPage = getReferencesInPage(post.PageId);
 		const linkedPageIdsSet = new Set<string>();
 
@@ -91,11 +110,11 @@ const meta = {
 };
 
 const paginationProps = {
-		...(page.url.prev && {
-				prevUrl: { url: getNavLink(page.url.prev), text: `← Previous Posts` },
+		...(page!.url.prev && {
+				prevUrl: { url: getNavLink(page!.url.prev), text: `← Previous Posts` },
 		}),
-		...(page.url.next && {
-				nextUrl: { url: getNavLink(page.url.next), text: `Next Posts →` },
+		...(page!.url.next && {
+				nextUrl: { url: getNavLink(page!.url.next), text: `Next Posts →` },
 		}),
 };
 ---
