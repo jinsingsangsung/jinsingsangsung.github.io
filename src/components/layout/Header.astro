@@ -37,7 +37,7 @@ const rss_path = getNavLink("/rss.xml");
 				{
 					siteInfo.logo && siteInfo.logo.Type === "emoji" ? (
 						<>
-							<span class="me-3 h-10 w-10 sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15">
+							<span class="me-3 h-10 w-10 sm:flex-col sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15">
 								{siteInfo.logo.Emoji}
 							</span>
 							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
@@ -45,7 +45,7 @@ const rss_path = getNavLink("/rss.xml");
 					) : siteInfo.logo && siteInfo.logo.Type === "external" ? (
 						<>
 							<img
-								class="me-3 h-10 w-10 object-contain sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
+								class="me-3 h-10 w-10 object-contain sm:flex-col sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
 								loading="eager"
 								src={siteInfo.logo.Url}
 								alt="Site header image"
