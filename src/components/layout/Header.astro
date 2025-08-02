@@ -54,13 +54,15 @@ const rss_path = getNavLink("/rss.xml");
 						</>
 					) : siteInfo.logo && siteInfo.logo.Type === "file" && customIconURL ? (
 						<>
-							<img
-								loading="eager"
-								src={customIconURL}
-								class="me-3 h-10 w-10 object-contain sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
-								alt="Site header image"
-							/>
-							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
+							<span class="flex flex-col items-center sm:flex-row sm:items-center">
+								<span class="text-xl font-bold sm:text-2xl sm:me-3">{siteInfo.title}</span>
+								<img
+									loading="eager"
+									src={customIconURL}
+									class="mt-2 h-10 w-10 object-contain sm:mt-0 sm:h-15 sm:w-15"
+									alt="Site header image"
+								/>
+							</span>
 						</>
 					) : (
 						<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
