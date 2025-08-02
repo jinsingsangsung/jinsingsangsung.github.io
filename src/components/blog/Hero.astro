@@ -29,7 +29,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 		<FormattedDate date={new Date(post.Date)} dateTimeOptions={dateTimeOptions} />
 	</p>
 	{
-		post.Date && post.LastUpdatedDate && areDifferentDates(post.Date, post.LastUpdatedDate) && post.Collection === "Personal Notes" && (
+		post.Date && post.LastUpdatedDate && areDifferentDates(post.Date, post.LastUpdatedDate) && (post.Collection === "Personal Notes" || post.Collection === "Gallery") && (
 			<span class="bg-quote/10 text-quote text-xs rounded px-1 py-0.5">
 				{"Last Updated:"}
 				<FormattedDate
