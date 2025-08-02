@@ -1,6 +1,6 @@
 ---
 import type { Publication } from "@/lib/interfaces";
-import { filePath } from "@/lib/blog-helpers";
+import { filePath, getNavLink } from "@/lib/blog-helpers";
 import PublicationRichText from "./PublicationRichText.astro";
 
 interface Props {
@@ -8,6 +8,19 @@ interface Props {
 }
 
 const { publication } = Astro.props;
+
+// Convert publication title to slug (same logic as Notion slugs)
+const createSlugFromTitle = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '') // Remove special characters except spaces
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
+    .substring(0, 50); // Limit length like Notion does
+};
+
+const publicationSlug = createSlugFromTitle(publication.Title);
+const publicationLink = getNavLink(`/posts/${publicationSlug}`);
 
 // Process authors to highlight "Jinsung Lee"
 const processAuthors = (authorsString: string) => {
@@ -37,7 +50,8 @@ if (publication.FeaturedImage) {
 }
 ---
 
-<div class="publication-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-transform hover:scale-105 border border-gray-200 dark:border-gray-700">
+<a href={publicationLink} class="publication-card-link block" data-astro-prefetch>
+  <div class="publication-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-transform hover:scale-105 border border-gray-200 dark:border-gray-700 cursor-pointer">
   <div class="flex flex-col md:flex-row gap-4">
     {imageUrl && (
       <div class="md:w-1/3 flex-shrink-0">
@@ -75,6 +89,7 @@ if (publication.FeaturedImage) {
             href={publication.ProjectPageUrl} 
             target="_blank" 
             rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
             class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-50 rounded-full hover:bg-blue-100 dark:text-blue-400 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 transition-colors"
           >
             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,6 +104,7 @@ if (publication.FeaturedImage) {
             href={publication.PDFUrl} 
             target="_blank" 
             rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
             class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-full hover:bg-red-100 dark:text-red-400 dark:bg-red-900/20 dark:hover:bg-red-900/30 transition-colors"
           >
             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,6 +119,7 @@ if (publication.FeaturedImage) {
             href={publication.CodeUrl} 
             target="_blank" 
             rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
             class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200 dark:text-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
           >
             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,9 +132,16 @@ if (publication.FeaturedImage) {
     </div>
   </div>
 </div>
+</a>
 
 <style>
   .publication-card {
     transition: all 0.3s ease;
+  }
+  
+  .publication-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
   }
 </style>
