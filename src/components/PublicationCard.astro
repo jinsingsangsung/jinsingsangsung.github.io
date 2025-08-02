@@ -15,8 +15,7 @@ const createSlugFromTitle = (title: string): string => {
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, '') // Remove special characters except spaces
     .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/^-+|-+$/g, '') // Remove leading/trailing hyphens
-    .substring(0, 50); // Limit length like Notion does
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
 };
 
 const publicationSlug = createSlugFromTitle(publication.Title);
