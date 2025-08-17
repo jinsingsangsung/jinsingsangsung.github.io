@@ -35,7 +35,9 @@ const debugInfo = {
 	rawDbIcon: !!database.Icon,
 	rawDbIconType: database.Icon?.Type,
 	rawDbIconUrl: database.Icon?.Url,
-	databaseTitle: database.Title
+	databaseTitle: database.Title,
+	hasDbProperties: !!database.propertiesRaw,
+	lastUpdated: database.LastUpdatedTimeStamp?.toISOString()?.substring(0, 10)
 };
 
 const rss_path = getNavLink("/rss.xml");
@@ -119,7 +121,9 @@ const rss_path = getNavLink("/rss.xml");
 		DB Icon: {debugInfo.rawDbIcon ? "✅" : "❌"}<br/>
 		DB Type: {debugInfo.rawDbIconType || "None"}<br/>
 		DB URL: {debugInfo.rawDbIconUrl ? `${debugInfo.rawDbIconUrl.substring(0, 25)}...` : "None"}<br/>
-		DB Title: {debugInfo.databaseTitle}
+		DB Title: {debugInfo.databaseTitle}<br/>
+		Has Props: {debugInfo.hasDbProperties ? "✅" : "❌"}<br/>
+		Updated: {debugInfo.lastUpdated || "None"}
 	</div>
 	
 	<div class="flex flex-row print:hidden ml-4 max-[480px]:ml-6 max-[320px]:ml-8">
