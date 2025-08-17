@@ -1329,6 +1329,11 @@ function _buildPost(pageObject: responses.PageObject): Post {
 				Type: pageObject.icon.type,
 				Url: pageObject.icon.external?.url || "",
 			};
+		} else if (pageObject.icon.type === "file" && "file" in pageObject.icon) {
+			icon = {
+				Type: pageObject.icon.type,
+				Url: pageObject.icon.file?.url || "",
+			};
 		}
 	}
 

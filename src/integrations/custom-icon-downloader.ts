@@ -8,16 +8,18 @@ export default (): AstroIntegration => ({
 		"astro:build:start": async () => {
 			const database = await getDatabase();
 			const icon = database.Icon as FileObject;
+			
+			// Check if we have a database icon that is a file (including custom emojis)
+			if (!database.Icon || (database.Icon.Type !== "file" && database.Icon.Type !== "external")) {
+				console.log("No database icon found or icon is not a file/external type");
+				return Promise.resolve();
+			}
+
 			let url!: URL;
 			try {
 				url = new URL(icon.Url);
 			} catch (err) {
 				console.log("Invalid Icon image URL");
-				return Promise.resolve();
-			}
-
-			// if (!database.Icon || database.Icon.Type !== 'file' || (database.LastUpdatedTimeStamp < LAST_BUILD_TIME && !fs.existsSync(generateFilePath(url)))) {
-			if (!database.Icon || database.Icon.Type !== "file") {
 				return Promise.resolve();
 			}
 
