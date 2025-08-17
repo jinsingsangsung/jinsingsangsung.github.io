@@ -829,6 +829,9 @@ export async function getDatabase(): Promise<Database> {
 		},
 	);
 
+	// Debug: Store the raw icon response for website display
+	global.notionDebugIcon = res.icon;
+
 	let icon: FileObject | Emoji | null = null;
 	if (res.icon) {
 		if (res.icon.type === "emoji" && "emoji" in res.icon) {

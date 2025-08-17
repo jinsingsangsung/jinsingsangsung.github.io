@@ -37,7 +37,10 @@ const debugInfo = {
 	rawDbIconUrl: database.Icon?.Url,
 	databaseTitle: database.Title,
 	hasDbProperties: !!database.propertiesRaw,
-	lastUpdated: database.LastUpdatedTimeStamp?.toISOString()?.substring(0, 10)
+	lastUpdated: database.LastUpdatedTimeStamp?.toISOString()?.substring(0, 10),
+	// Add raw API response debug for custom icon issue
+	rawIconExists: !!(global as any)?.notionDebugIcon,
+	rawIconData: JSON.stringify((global as any)?.notionDebugIcon || "None")
 };
 
 const rss_path = getNavLink("/rss.xml");
@@ -123,7 +126,10 @@ const rss_path = getNavLink("/rss.xml");
 		DB URL: {debugInfo.rawDbIconUrl ? `${debugInfo.rawDbIconUrl.substring(0, 25)}...` : "None"}<br/>
 		DB Title: {debugInfo.databaseTitle}<br/>
 		Has Props: {debugInfo.hasDbProperties ? "✅" : "❌"}<br/>
-		Updated: {debugInfo.lastUpdated || "None"}
+		Updated: {debugInfo.lastUpdated || "None"}<br/>
+		<strong>Raw API Icon:</strong><br/>
+		Exists: {debugInfo.rawIconExists ? "✅" : "❌"}<br/>
+		Data: {debugInfo.rawIconData}
 	</div>
 	
 	<div class="flex flex-row print:hidden ml-4 max-[480px]:ml-6 max-[320px]:ml-8">
