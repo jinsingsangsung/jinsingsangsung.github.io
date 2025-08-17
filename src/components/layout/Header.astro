@@ -21,13 +21,21 @@ if (siteInfo.logo && siteInfo.logo.Type === "file") {
 }
 
 // Debug info for display on website
+import { getDatabase } from "@/lib/notion/client";
+const database = await getDatabase();
+
 const debugInfo = {
 	hasLogo: !!siteInfo.logo,
 	logoType: siteInfo.logo?.Type,
 	logoUrl: siteInfo.logo?.Url,
 	logoEmoji: siteInfo.logo?.Emoji,
 	customIconURL: customIconURL,
-	siteTitle: siteInfo.title
+	siteTitle: siteInfo.title,
+	// Raw database debug
+	rawDbIcon: !!database.Icon,
+	rawDbIconType: database.Icon?.Type,
+	rawDbIconUrl: database.Icon?.Url,
+	databaseTitle: database.Title
 };
 
 const rss_path = getNavLink("/rss.xml");
@@ -100,13 +108,18 @@ const rss_path = getNavLink("/rss.xml");
 	</div>
 	
 	<!-- Debug Info Display -->
-	<div class="fixed top-0 right-0 bg-red-100 text-red-800 p-2 text-xs max-w-xs z-50 border border-red-300">
+	<div class="fixed top-0 right-0 bg-red-100 text-red-800 p-2 text-xs max-w-sm z-50 border border-red-300">
 		<strong>🔍 Icon Debug:</strong><br/>
+		<strong>SiteInfo Logo:</strong><br/>
 		Has Logo: {debugInfo.hasLogo ? "✅" : "❌"}<br/>
 		Type: {debugInfo.logoType || "None"}<br/>
-		URL: {debugInfo.logoUrl ? `${debugInfo.logoUrl.substring(0, 30)}...` : "None"}<br/>
+		URL: {debugInfo.logoUrl ? `${debugInfo.logoUrl.substring(0, 25)}...` : "None"}<br/>
 		CustomPath: {debugInfo.customIconURL || "None"}<br/>
-		Title: {debugInfo.siteTitle}
+		<strong>Raw Database:</strong><br/>
+		DB Icon: {debugInfo.rawDbIcon ? "✅" : "❌"}<br/>
+		DB Type: {debugInfo.rawDbIconType || "None"}<br/>
+		DB URL: {debugInfo.rawDbIconUrl ? `${debugInfo.rawDbIconUrl.substring(0, 25)}...` : "None"}<br/>
+		DB Title: {debugInfo.databaseTitle}
 	</div>
 	
 	<div class="flex flex-row print:hidden ml-4 max-[480px]:ml-6 max-[320px]:ml-8">
