@@ -829,8 +829,7 @@ export async function getDatabase(): Promise<Database> {
 		},
 	);
 
-	// Debug: Store the raw icon response for website display
-	global.notionDebugIcon = res.icon;
+	// Debug code removed - custom emoji icon support is working!
 
 	let icon: FileObject | Emoji | null = null;
 	if (res.icon) {

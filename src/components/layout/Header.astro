@@ -20,28 +20,7 @@ if (siteInfo.logo && siteInfo.logo.Type === "file") {
 	}
 }
 
-// Debug info for display on website
-import { getDatabase } from "@/lib/notion/client";
-const database = await getDatabase();
-
-const debugInfo = {
-	hasLogo: !!siteInfo.logo,
-	logoType: siteInfo.logo?.Type,
-	logoUrl: siteInfo.logo?.Url,
-	logoEmoji: siteInfo.logo?.Emoji,
-	customIconURL: customIconURL,
-	siteTitle: siteInfo.title,
-	// Raw database debug
-	rawDbIcon: !!database.Icon,
-	rawDbIconType: database.Icon?.Type,
-	rawDbIconUrl: database.Icon?.Url,
-	databaseTitle: database.Title,
-	hasDbProperties: !!database.propertiesRaw,
-	lastUpdated: database.LastUpdatedTimeStamp?.toISOString()?.substring(0, 10),
-	// Add raw API response debug for custom icon issue
-	rawIconExists: !!(global as any)?.notionDebugIcon,
-	rawIconData: JSON.stringify((global as any)?.notionDebugIcon || "None")
-};
+// Debug code removed - custom icon functionality is working!
 
 const rss_path = getNavLink("/rss.xml");
 ---
@@ -80,7 +59,7 @@ const rss_path = getNavLink("/rss.xml");
 							<img
 								loading="eager"
 								src={customIconURL}
-								class="me-3 h-10 w-10 object-contain sm:flex-col sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
+								class="me-3 h-10 w-10 object-contain flex-shrink-0 sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
 								alt="Site header image"
 							/>
 							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
@@ -112,25 +91,7 @@ const rss_path = getNavLink("/rss.xml");
 		</nav>
 	</div>
 	
-	<!-- Debug Info Display -->
-	<div class="fixed top-0 right-0 bg-red-100 text-red-800 p-2 text-xs max-w-sm z-50 border border-red-300">
-		<strong>🔍 Icon Debug:</strong><br/>
-		<strong>SiteInfo Logo:</strong><br/>
-		Has Logo: {debugInfo.hasLogo ? "✅" : "❌"}<br/>
-		Type: {debugInfo.logoType || "None"}<br/>
-		URL: {debugInfo.logoUrl ? `${debugInfo.logoUrl.substring(0, 25)}...` : "None"}<br/>
-		CustomPath: {debugInfo.customIconURL || "None"}<br/>
-		<strong>Raw Database:</strong><br/>
-		DB Icon: {debugInfo.rawDbIcon ? "✅" : "❌"}<br/>
-		DB Type: {debugInfo.rawDbIconType || "None"}<br/>
-		DB URL: {debugInfo.rawDbIconUrl ? `${debugInfo.rawDbIconUrl.substring(0, 25)}...` : "None"}<br/>
-		DB Title: {debugInfo.databaseTitle}<br/>
-		Has Props: {debugInfo.hasDbProperties ? "✅" : "❌"}<br/>
-		Updated: {debugInfo.lastUpdated || "None"}<br/>
-		<strong>Raw API Icon:</strong><br/>
-		Exists: {debugInfo.rawIconExists ? "✅" : "❌"}<br/>
-		Data: {debugInfo.rawIconData}
-	</div>
+	<!-- Debug info removed - icon is working! -->
 	
 	<div class="flex flex-row print:hidden ml-4 max-[480px]:ml-6 max-[320px]:ml-8">
 		<Search />
