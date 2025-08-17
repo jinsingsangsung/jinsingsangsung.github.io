@@ -33,7 +33,7 @@ const rss_path = getNavLink("/rss.xml");
 		<div class="flex items-center">
 			<a
 				href={getNavLink("/")}
-				class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
+				class="inline-flex items-center sm:relative sm:inline-block group"
 				aria-current={url.pathname === "/" ? "page" : false}
 			>
 				{
@@ -56,12 +56,20 @@ const rss_path = getNavLink("/rss.xml");
 						</>
 					) : siteInfo.logo && siteInfo.logo.Type === "file" && customIconURL ? (
 						<>
-							<img
-								loading="eager"
-								src={customIconURL}
-								class="me-3 h-10 w-10 object-contain flex-shrink-0 sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-15 sm:w-15"
-								alt="Site header image"
-							/>
+							<div class="relative me-3 sm:absolute sm:start-[-4.5rem] sm:me-0">
+								<img
+									loading="eager"
+									src={customIconURL}
+									class="h-10 w-10 object-contain flex-shrink-0 sm:h-15 sm:w-15 transition-transform duration-200 group-hover:scale-105"
+									alt="Site header image"
+								/>
+								<!-- Tooltip -->
+								<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 pointer-events-none whitespace-nowrap z-10">
+									whippo
+									<!-- Arrow -->
+									<div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+								</div>
+							</div>
 							<span class="text-xl font-bold sm:text-2xl">{siteInfo.title}</span>
 						</>
 					) : (
