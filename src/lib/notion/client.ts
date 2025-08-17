@@ -849,6 +849,12 @@ export async function getDatabase(): Promise<Database> {
 				Type: res.icon.type,
 				Url: res.icon.file?.url || "",
 			};
+		} else if (res.icon.type === "custom_emoji" && "custom_emoji" in res.icon) {
+			// Handle custom uploaded emojis as file type
+			icon = {
+				Type: "file",
+				Url: res.icon.custom_emoji?.url || "",
+			};
 		}
 	}
 

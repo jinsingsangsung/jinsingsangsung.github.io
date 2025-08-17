@@ -11,7 +11,7 @@ export default (): AstroIntegration => ({
 			
 			// Check if we have a database icon that is a file (including custom emojis)
 			if (!database.Icon || (database.Icon.Type !== "file" && database.Icon.Type !== "external")) {
-				console.log("No database icon found or icon is not a file/external type");
+				console.log("No database icon found or icon is not a file/external type:", database.Icon?.Type);
 				return Promise.resolve();
 			}
 
