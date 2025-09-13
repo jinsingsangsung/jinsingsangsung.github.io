@@ -105,8 +105,8 @@
 		},
 		"fontfamily-google-fonts": {
 			"combined-url": "https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Fira+Code:wght@400;500&display=swap",
-			"sans-font-name": "Newsreader",
-			"serif-font-name": "Libertinus Serif Display",
+			"sans-font-name": "Libertinus Serif Display",
+			"serif-font-name": "Newsreader",
 			"mono-font-name": "Fira Code"
 		}
 	},
