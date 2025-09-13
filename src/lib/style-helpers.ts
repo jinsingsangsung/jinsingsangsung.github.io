@@ -243,3 +243,23 @@ export const getTextToSVGPath = (text: string) => {
 	}
 	return "";
 };
+
+// Map Notion font families to CSS font-family values
+export const getNotionFontFamily = (fontFamily: string | undefined): string | null => {
+	if (!fontFamily) return null;
+	
+	switch (fontFamily.toLowerCase()) {
+		case 'serif':
+			return 'var(--font-serif)';
+		case 'mono':
+		case 'monospace':
+			return 'var(--font-mono)';
+		case 'sans':
+		case 'sans-serif':
+		case 'default':
+			return 'var(--font-sans)';
+		default:
+			// For custom font families, use them directly
+			return `"${fontFamily}", var(--font-sans)`;
+	}
+};

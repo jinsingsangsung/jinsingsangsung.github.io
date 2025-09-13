@@ -1453,6 +1453,8 @@ function _buildRichText(richTextObject: responses.RichTextObject): RichText {
 		Underline: richTextObject.annotations.underline,
 		Code: richTextObject.annotations.code,
 		Color: richTextObject.annotations.color,
+		// Extract font family if available (future API support)
+		FontFamily: (richTextObject.annotations as any)?.font_family || undefined,
 	};
 
 	const richText: RichText = {

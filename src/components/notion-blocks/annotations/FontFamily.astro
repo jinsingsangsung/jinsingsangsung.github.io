@@ -1,0 +1,21 @@
+---
+import type { RichText } from "@/lib/interfaces.ts";
+import { getNotionFontFamily } from "@/lib/style-helpers.ts";
+
+export interface Props {
+	richText: RichText;
+}
+
+const { richText } = Astro.props;
+const fontFamily = getNotionFontFamily(richText.Annotation.FontFamily);
+---
+
+{
+	fontFamily ? (
+		<span style={`font-family: ${fontFamily};`}>
+			<slot />
+		</span>
+	) : (
+		<slot />
+	)
+}

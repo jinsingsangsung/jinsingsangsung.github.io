@@ -7,6 +7,7 @@ import Strikethrough from "@/components/notion-blocks/annotations/Strikethrough.
 import Underline from "@/components/notion-blocks/annotations/Underline.astro";
 import Color from "@/components/notion-blocks/annotations/Color.astro";
 import Code from "@/components/notion-blocks/annotations/Code.astro";
+import FontFamily from "@/components/notion-blocks/annotations/FontFamily.astro";
 import Anchor from "@/components/notion-blocks/annotations/Anchor.astro";
 import MentionPage from "@/components/notion-blocks/MentionPage.astro";
 import MentionDate from "@/components/notion-blocks/MentionDate.astro";
@@ -28,13 +29,15 @@ const { richText, blockID } = Astro.props;
 				{
 					<Color richText={richText}>
 						{
-							<Underline richText={richText}>
+							<FontFamily richText={richText}>
 								{
-									<Strikethrough richText={richText}>
+									<Underline richText={richText}>
 										{
-											<Italic richText={richText}>
+											<Strikethrough richText={richText}>
 												{
-													<Bold richText={richText}>
+													<Italic richText={richText}>
+														{
+															<Bold richText={richText}>
 														{richText.Text &&
 															richText.Text.Content.split("\n").map(
 																(content: string, i: number) => {
@@ -68,13 +71,15 @@ const { richText, blockID } = Astro.props;
 														{richText.Mention && richText.Mention.CustomEmoji && (
 															<MentionCustomEmoji mention={richText.Mention} />
 														)}
-													</Bold>
+															</Bold>
+														}
+													</Italic>
 												}
-											</Italic>
+											</Strikethrough>
 										}
-									</Strikethrough>
+									</Underline>
 								}
-							</Underline>
+							</FontFamily>
 						}
 					</Color>
 				}

@@ -293,6 +293,7 @@ export interface Annotation {
 	Underline: boolean;
 	Code: boolean;
 	Color: string;
+	FontFamily?: string; // Optional font family for rich text
 }
 
 export interface Link {
