@@ -106,7 +106,7 @@
 		"fontfamily-google-fonts": {
 			"combined-url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Fira+Code:wght@400;500&display=swap",
 			"sans-font-name": "IBM Plex Sans",
-			"serif-font-name": "Open Sans",
+			"serif-font-name": "",
 			"mono-font-name": "Fira Code"
 		}
 	},
