@@ -104,9 +104,9 @@
 			}
 		},
 		"fontfamily-google-fonts": {
-			"combined-url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Crimson+Text:wght@400;600&family=Fira+Code:wght@400;500&display=swap",
-			"sans-font-name": "Crimson Text",
-			"serif-font-name": "Crimson Text",
+			"combined-url": "https://fonts.googleapis.com/css2?family=Libertinus+Serif+Display&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Fira+Code:wght@400;500&display=swap",
+			"sans-font-name": "Newsreader",
+			"serif-font-name": "Libertinus Serif Display",
 			"mono-font-name": "Fira Code"
 		}
 	},
