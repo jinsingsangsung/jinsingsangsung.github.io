@@ -36,7 +36,7 @@ const plainTextCaption = block.NImage?.Caption.map((richText) => richText.PlainT
 						aria-label={`Open image with alt ${plainTextCaption} in lightbox`}
 					>
 						<img
-							class="imagemedia block max-w-[80%] sm:max-w-[66%] rounded-md"
+							class="imagemedia block max-w-[33%] sm:max-w-[66%] rounded-md"
 							loading={getFirstImage() && setId ? "eager" : "lazy"}
 							src={image}
 							alt={plainTextCaption}
