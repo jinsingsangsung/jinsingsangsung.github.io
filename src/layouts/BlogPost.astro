@@ -34,7 +34,7 @@ const articleDate = new Date(post.Date).toISOString();
 <BaseLayout
 	meta={{ title: post.Title, description: post.Excerpt, articleDate, ogImage: socialImage }}
 >
-	<div class="max-w-[768px] print:mr-auto print:max-w-full">
+	<div class="max-w-[896px] print:mr-auto print:max-w-full">
 		<article class="break-words" data-pagefind-body>
 			<div id="blog-hero"><BlogHero post={post} /></div>
 			<div class="mt-8">
@@ -46,7 +46,7 @@ const articleDate = new Date(post.Date).toISOString();
 		</article>
 		{!!headings.length && <TOC headings={headings} />}
 	</div>
-	<div class="max-w-[768px] print:hidden">
+	<div class="max-w-[896px] print:hidden">
 		<aside class="" data-pagefind-ignore="all">
 			<WebMentions />
 			<PostComments post={post} />
