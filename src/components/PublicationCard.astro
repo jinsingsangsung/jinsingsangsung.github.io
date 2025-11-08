@@ -27,7 +27,7 @@ const processAuthors = (authorsString: string) => {
   
   const authors = authorsString.split(",").map(author => author.trim());
   return authors.map(author => {
-    if (author === "Jinsung Lee") {
+    if (author === "Jinsung Lee" || author === "Jinsung Lee*") {
       return `<span class="font-bold underline">${author}</span>`;
     }
     return author;
